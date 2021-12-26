@@ -31,6 +31,7 @@ export default function Login() {
     history.push({
       pathname: '/'
     })
+
     dispatch(getLoginApi(data, (val) => {
       if (val.length !== 0) {
         let andd = val?.CheckValidLoginForInventory;
@@ -52,6 +53,7 @@ export default function Login() {
         message.error('Username or password incorrect')
       }
     }))
+    
   };
 
   const onFinishFailed = (errorInfo) => {

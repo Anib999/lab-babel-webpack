@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import conlogo from '../../assets/images/contruction.svg';
+// import conlogo from '../../assets/images/contruction.svg';
 
 const ErrorPage = () => {
   return (
     <ErrorPageContainer>
-      <img src={conlogo} alt="" />
+      <img src="" alt="404 error" />
       <h3>Under Construction ...</h3>
     </ErrorPageContainer>
   )
