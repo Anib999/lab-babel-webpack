@@ -13,7 +13,7 @@ import FilterTable from './FilterTable'
 import { getGetRequestorList, getGetRefererList, getListofUser } from '../../services/datametricService'
 
 const Filter = ({ dataReturn, ...props }) => {
-  const { serchButton, itemType, categroryType, dateRange, dataRet, dateRet, locateRange, itemName, notAll, notAllLocate, toCompareData, forGoodsIn, forGoodsOut, onSearch, forConsumptionReport, forItem, forItemVsRatio, forItemType, forCategory, forLocation, forRack, forUnits, forConsumption, forConsumptionLookUp, getrequestorlist, getrefererlist, getuserslist, forRequestorReport, forRefererReport } = props
+  const { serchButton, itemType, categroryType, dateRange, dataRet, dateRet, locateRange, itemName, notAll, notAllLocate, toCompareData, forGoodsIn, forGoodsOut, onSearch, forConsumptionReport, forItem, forItemVsRatio, forItemType, forCategory, forLocation, forRack, forUnits, forConsumption, forConsumptionLookUp, getrequestorlist, getrefererlist, getuserslist, forRequestorReport, forRefererReport, forDailyReport, forDailyTrasection, forReportSalesReport } = props
   const dispatch = useDispatch();
 
   const { Option } = Select;
@@ -105,14 +105,6 @@ const Filter = ({ dataReturn, ...props }) => {
       )
     }
 
-    // if (gettesttypelist !== undefined) {
-    //   dispatch(
-    //     getGetTestTypeList(val => {
-    //       console.log(val);
-    //     })
-    //   )
-    // }
-
     if (getuserslist !== undefined) {
       dispatch(
         getListofUser(val => {
@@ -130,17 +122,12 @@ const Filter = ({ dataReturn, ...props }) => {
       if (forGoodsIn) {
         return (
           e.ItemName.toLowerCase().includes(searchText)
-            // || e.Testname.toLowerCase().includes(searchText) 
             ?
             pushedArr.push(e)
             : ''
-          // columns.map(eem => {
-
-          // })
-
-
         )
       }
+
       if (forGoodsOut) {
         return (
           e.ItemName.toLowerCase().includes(searchText)
@@ -150,15 +137,16 @@ const Filter = ({ dataReturn, ...props }) => {
             : ''
         )
       }
+
       if (forConsumptionReport) {
         return (
-          // e.ItemName.toLowerCase().includes(searchText) || 
           e.Test.toLowerCase().includes(searchText)
             ?
             pushedArr.push(e)
             : ''
         )
       }
+
       if (forItem) {
         return (
           e.ItemName.toLowerCase().includes(searchText)
@@ -166,8 +154,8 @@ const Filter = ({ dataReturn, ...props }) => {
             || e.ItemCode.toLowerCase().includes(searchText)
             ? pushedArr.push(e) : ''
         )
-
       }
+
       if (forItemVsRatio) {
         return (
           e.TestName.toLowerCase().includes(searchText) || e.ItemName.toLowerCase().includes(searchText)
@@ -176,6 +164,7 @@ const Filter = ({ dataReturn, ...props }) => {
             : ''
         )
       }
+
       if (forItemType) {
         return (
           e.ItemType.toLowerCase().includes(searchText)
@@ -184,6 +173,7 @@ const Filter = ({ dataReturn, ...props }) => {
             : ''
         )
       }
+
       if (forCategory) {
         return (
           e.CategoryType.toLowerCase().includes(searchText)
@@ -192,6 +182,7 @@ const Filter = ({ dataReturn, ...props }) => {
             : ''
         )
       }
+
       if (forLocation) {
         return (
           e.Location.toLowerCase().includes(searchText)
@@ -201,6 +192,7 @@ const Filter = ({ dataReturn, ...props }) => {
             : ''
         )
       }
+
       if (forRack) {
         return (
           e.RackCode.toLowerCase().includes(searchText)
@@ -210,6 +202,7 @@ const Filter = ({ dataReturn, ...props }) => {
             : ''
         )
       }
+
       if (forUnits) {
         return (
           e.Units.toLowerCase().includes(searchText)
@@ -218,6 +211,7 @@ const Filter = ({ dataReturn, ...props }) => {
             : ''
         )
       }
+
       if (forConsumption) {
         return (
           e.ConsumptionGroupName.toLowerCase().includes(searchText)
@@ -226,6 +220,7 @@ const Filter = ({ dataReturn, ...props }) => {
             : ''
         )
       }
+
       if (forConsumptionLookUp) {
         return (
           e.ConsumptionGroupName.toLowerCase().includes(searchText) ||
@@ -241,7 +236,6 @@ const Filter = ({ dataReturn, ...props }) => {
             || (e.BillNo !== undefined && e.BillNo.toLowerCase().includes(searchText))
             || (e.Test !== undefined && e.Test.toLowerCase().includes(searchText))
             || e["Patient Name"].toLowerCase().includes(searchText)
-            // ||(e.Price!== undefined && e.Price.toLowerCase().includes(searchText))
             ?
             pushedArr.push(e)
             : ''
@@ -253,10 +247,52 @@ const Filter = ({ dataReturn, ...props }) => {
             || (e.BillNo !== undefined && e.BillNo.toLowerCase().includes(searchText))
             || (e.Test !== undefined && e.Test.toLowerCase().includes(searchText))
             || e["Patient Name"].toLowerCase().includes(searchText)
-            // ||(e.Price!== undefined && e.Price.toLowerCase().includes(searchText))
             ?
             pushedArr.push(e)
             : ''
+        )
+      }
+      if (forDailyReport) {
+        return (
+          e.UserName.toLowerCase().includes(searchText)
+            || e.PaymentType.toLowerCase().includes(searchText)
+            || e.Remaining.toString().includes(searchText)
+            || e.TotalSales.toString().includes(searchText)
+            || e.Collection.toString().includes(searchText)
+            ?
+            pushedArr.push(e) : ''
+        )
+      }
+
+      if (forDailyTrasection) {
+        return (
+          e.Age.toLowerCase().includes(searchText)
+            || e.Amount.toString().includes(searchText)
+            || e.RemainingAmount.toString().includes(searchText)
+            || e.BillId.toString().includes(searchText)
+            || e.BillNo.toString().includes(searchText)
+            || e.ContactNo.toString().includes(searchText)
+            || e.CreatedOn.toLowerCase().includes(searchText)
+            || e.CreatedOnNepaliDate.toLowerCase().includes(searchText)
+            || e.FirstName.toLowerCase().includes(searchText)
+            || e.LastName.toLowerCase().includes(searchText)
+            || e.MiddleName.toLowerCase().includes(searchText)
+            || e.PaymentMOde.toLowerCase().includes(searchText)
+            || e.PaymentTYpe.toLowerCase().includes(searchText)
+            || e.SampleId.toString().includes(searchText)
+            || e.usrFullName.toLowerCase().includes(searchText)
+            || e.Requestor.toLowerCase().includes(searchText)
+            ?
+            pushedArr.push(e) : ''
+        )
+      }
+      if (forReportSalesReport) {
+        return (
+          e.Requestor.toLowerCase().includes(searchText)
+            // || e.DiscountTotal.toString().includes(searchText)
+            // || e.ActualTotal.toString().includes(searchText)
+            // || e.TotalPrice.toString().includes(searchText)
+            ? pushedArr.push(e) : ''
         )
       }
 
@@ -265,11 +301,8 @@ const Filter = ({ dataReturn, ...props }) => {
     dataReturn(pushedArr)
   }
 
-
-
   return (
     <FilterContainer>
-
       <Row justify='space-between' align='bottom'>
         <Col lg={20} md={24} sm={24}>
           <Row className="filterRow" align='bottom'>
@@ -458,8 +491,6 @@ const Filter = ({ dataReturn, ...props }) => {
               </Col>
             }
 
-            
-
             <Col>
               {
                 serchButton &&
@@ -503,5 +534,4 @@ const FilterContainer = styled.div`
   .labelTop{
     display: block;
   }
-  .costomeInput{}
 `
