@@ -7,7 +7,8 @@ import { Table, Tag } from "antd";
 
 const DailySummary = () => {
     const dispatch = useDispatch();
-    const [testData, setTestData] = useState([]);
+    const [tableData, settableData] = useState([]);
+    const [newtableData, setnewtableData] = useState([]);
 
     const columns = [
         {
@@ -53,7 +54,8 @@ const DailySummary = () => {
 
     const getDataForReport = (data) => {
         dispatch(getDailySummaryReport(data, (val) => {
-            setTestData(val)
+            settableData(val)
+            setnewtableData(val)
         }))
     }
 
@@ -66,6 +68,14 @@ const DailySummary = () => {
         getDataForReport(data)
     }
 
+    const handleSearch = (val) => {
+        if (val === undefined || val === '') {
+            setnewtableData(tableData)
+        } else {
+            setnewtableData(val)
+        }
+    }
+
     return (
         <>
             <PageHeader
@@ -76,10 +86,14 @@ const DailySummary = () => {
                 dateRet={dataRet}
                 serchButton
                 getuserslist
+                toCompareData={tableData}
+                onSearch
+                dataReturn={handleSearch}
+                forDailyReport
             />
             <Table
                 columns={columns}
-                dataSource={testData}
+                dataSource={newtableData}
             />
         </>
     )

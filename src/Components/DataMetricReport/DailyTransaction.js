@@ -7,7 +7,8 @@ import { Table, Tag } from "antd";
 
 const DailyTransaction = () => {
     const dispatch = useDispatch();
-    const [testData, setTestData] = useState([]);
+    const [tableData, settableData] = useState([]);
+    const [newtableData, setnewtableData] = useState([]);
 
     const columns = [
         {
@@ -45,12 +46,8 @@ const DailyTransaction = () => {
             dataIndex: 'PaymentTYpe',
             key: 'PaymentTYpe',
             render: (text, record) => {
-                // let retColor = ''
-                // if(text !== null && text.toLowerCase() === 'cash')
-                //     retColor = 'green'
                 return (
                     <>
-                        {/* <Tag color={retColor}>{text}</Tag> */}
                         Type: {text} <br />
                         Mode: {record.PaymentMOde} <br />
                         Code: {record.PaymentCode}
@@ -106,7 +103,8 @@ const DailyTransaction = () => {
 
     const getDataForReport = (data) => {
         dispatch(getDailyTransactionReport(data, (val) => {
-            setTestData(val)
+            settableData(val)
+            setnewtableData(val)
         }))
     }
 
@@ -119,6 +117,14 @@ const DailyTransaction = () => {
         getDataForReport(data)
     }
 
+    const handleSearch = (val) => {
+        if (val === undefined || val === '') {
+            setnewtableData(tableData)
+        } else {
+            setnewtableData(val)
+        }
+    }
+
     return (
         <>
             <PageHeader
@@ -129,11 +135,15 @@ const DailyTransaction = () => {
                 dateRet={dataRet}
                 serchButton
                 getuserslist
+                toCompareData={tableData}
+                onSearch
+                dataReturn={handleSearch}
+                forDailyTrasection
             />
             <div className="tableisRes">
                 <Table
                     columns={columns}
-                    dataSource={testData}
+                    dataSource={newtableData}
                 />
             </div>
         </>
