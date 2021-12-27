@@ -20,7 +20,6 @@ const RequestorReport = () => {
         }))
     }
 
-
     const dataRet = (val) => {
         let data = {
             ...val,
@@ -35,12 +34,11 @@ const RequestorReport = () => {
         createTableHead()
     }, [tableData]);
 
-
-
     const createTableHead = () => {
         if (tableData.length !== 0) {
             let tableKeys = Object.keys(tableData[0]);
             let data = []
+            let labels = [];
 
             tableKeys.forEach(ele => {
                 data.push({
@@ -52,6 +50,7 @@ const RequestorReport = () => {
             setTableHead(data)
         }
     }
+
     const handleSearch = (val) => {
         if (val === undefined || val === '') {
             setnewTableData(tableData)
@@ -59,6 +58,7 @@ const RequestorReport = () => {
             setnewTableData(val)
         }
     }
+
     const handlePrinter = () => {
         if (tableHead.length !== 0) {
             let newWindow = window.open()
@@ -76,6 +76,9 @@ const RequestorReport = () => {
             let tableBody = '';
             let tableHeadHtml = '<thead>';
             let columns = [];
+            let newStyle = `<style>thead > tr> th:first-child, tbody > tr > td:first-child{
+                 display: none;
+                }</style>`
 
             tableHead.forEach(ele => {
                 tableHeadHtml += `<th>${ele?.title}</th>`;
@@ -95,7 +98,7 @@ const RequestorReport = () => {
 
             let allTable = `<table>${tableHeadHtml}${tableBody}</table>`
 
-            newWindow.document.body.innerHTML = newTableStyles + refName + allTable
+            newWindow.document.body.innerHTML = newTableStyles + newStyle + refName + allTable
 
             setTimeout(function () {
                 newWindow.print();
@@ -113,12 +116,7 @@ const RequestorReport = () => {
                 csvDataName='requestorReport.csv'
             />
             <div className="printBtncontainer">
-                <button
-                    onClick={handlePrinter}
-                    className="btn ant-btn btn-primary btn-primary--outline"
-                >
-                    Print
-                </button>
+                <button onClick={handlePrinter} className="btn ant-btn btn-primary btn-primary--outline">Print</button>
             </div>
             <Filter
                 dateRange

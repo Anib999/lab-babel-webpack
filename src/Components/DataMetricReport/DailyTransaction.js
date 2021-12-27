@@ -4,13 +4,15 @@ import Filter from '../Common/Filter'
 import PageHeader from '../Common/pageHeader'
 import { getDailyTransactionReport } from "../../services/datametricService";
 import { Table, Tag } from "antd";
+import { newTableStyles } from "../Common/TableStyles";
 
 const DailyTransaction = () => {
     const dispatch = useDispatch();
     const [tableData, settableData] = useState([]);
-    const [newtableData, setnewtableData] = useState([]);
+    const [newTableData, setNewTableData] = useState([]);
+    const [fromToDate, setfromToDate] = useState({});
 
-    const columns = [
+    const tableHead = [
         {
             title: 'Patient Info',
             dataIndex: 'FirstName',
@@ -104,7 +106,7 @@ const DailyTransaction = () => {
     const getDataForReport = (data) => {
         dispatch(getDailyTransactionReport(data, (val) => {
             settableData(val)
-            setnewtableData(val)
+            setNewTableData(val)
         }))
     }
 
@@ -115,13 +117,59 @@ const DailyTransaction = () => {
             todate: val[1].format("YYYY-MM-DD"),
         }
         getDataForReport(data)
+        setfromToDate(data)
     }
 
     const handleSearch = (val) => {
         if (val === undefined || val === '') {
-            setnewtableData(tableData)
+            setNewTableData(tableData)
         } else {
-            setnewtableData(val)
+            setNewTableData(val)
+        }
+    }
+
+    const handlePrinter = () => {
+        if (tableHead.length !== 0) {
+            let newWindow = window.open()
+
+            let refName = `<h3 class="gocenter">Daily Summery Report</h3><div class="headingContent">
+        <div>
+        
+        </div>
+        <div>
+        From ${fromToDate?.fromdate} - To ${fromToDate?.todate}
+        </div>
+        </div>
+        `;
+
+            let tableBody = '';
+            let tableHeadHtml = '<thead>';
+            let columns = [];
+
+            tableHead.forEach(ele => {
+                tableHeadHtml += `<th>${ele?.dataIndex}</th>`;
+                columns.push(ele.dataIndex);
+            })
+            tableHeadHtml += '</thead>';
+
+            newTableData.forEach(ele => {
+                tableBody = tableBody + '<tr>'
+
+                columns.forEach(cell => {
+                    tableBody = tableBody + '<td>' + ele[cell] + '</td>'
+                })
+
+                tableBody = tableBody + '</tr>'
+            })
+
+            let allTable = `<table>${tableHeadHtml}${tableBody}</table>`
+
+            newWindow.document.body.innerHTML = newTableStyles + refName + allTable
+
+            setTimeout(function () {
+                newWindow.print();
+                newWindow.close();
+            }, 300);
         }
     }
 
@@ -130,6 +178,9 @@ const DailyTransaction = () => {
             <PageHeader
                 pageTitle='Daily Transaction Report'
             />
+            <div className="printBtncontainer">
+                <button onClick={handlePrinter} className="btn ant-btn btn-primary btn-primary--outline">Print</button>
+            </div>
             <Filter
                 dateRange
                 dateRet={dataRet}
@@ -142,8 +193,8 @@ const DailyTransaction = () => {
             />
             <div className="tableisRes">
                 <Table
-                    columns={columns}
-                    dataSource={newtableData}
+                    columns={tableHead}
+                    dataSource={newTableData}
                 />
             </div>
         </>

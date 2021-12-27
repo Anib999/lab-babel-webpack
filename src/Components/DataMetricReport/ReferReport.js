@@ -6,8 +6,6 @@ import { getReferReport } from "../../services/datametricService";
 import { Table } from "antd";
 import { getAllPritDataSucess } from "../../store/slices/printSlice";
 import { newTableStyles } from "../Common/TableStyles";
-import styled from "styled-components";
-import styledComponents from "styled-components";
 
 const ReferReport = () => {
     const dispatch = useDispatch();
@@ -27,7 +25,6 @@ const ReferReport = () => {
 
         }))
     }
-    // console.log("date",printData)
 
     const dataRet = (val) => {
         let data = {
@@ -64,12 +61,10 @@ const ReferReport = () => {
 
         if (val === undefined || val === '') {
             setnewTableData(tableData)
-            // dispatch(getAllPritDataSucess(val))
             let obj2 = { data, tableData }
             dispatch(getAllPritDataSucess(obj2))
         } else {
             setnewTableData(val)
-            // dispatch(getAllPritDataSucess(val))
             let obj3 = { data, val }
             dispatch(getAllPritDataSucess(obj3))
         }
@@ -92,6 +87,9 @@ const ReferReport = () => {
             let tableBody = '';
             let tableHeadHtml = '<thead>';
             let columns = [];
+            let newStyle = `<style>thead > tr> th:first-child, tbody > tr > td:first-child{
+                display: none;
+               }</style>`
 
             tableHead.forEach(ele => {
                 tableHeadHtml += `<th>${ele?.title}</th>`;
@@ -111,7 +109,7 @@ const ReferReport = () => {
 
             let allTable = `<table>${tableHeadHtml}${tableBody}</table>`
 
-            newWindow.document.body.innerHTML = newTableStyles + refName + allTable
+            newWindow.document.body.innerHTML = newTableStyles + newStyle + refName + allTable
 
             setTimeout(function () {
                 newWindow.print();
@@ -121,7 +119,7 @@ const ReferReport = () => {
     }
 
     return (
-        <ReferReportContainer>
+        <>
             <PageHeader
                 pageTitle='Referer Report'
                 csvLinkTitle='Export CSV'
@@ -131,12 +129,7 @@ const ReferReport = () => {
 
             </PageHeader>
             <div className="printBtncontainer">
-                <button
-                    onClick={handlePrinter}
-                    className="btn ant-btn btn-primary btn-primary--outline"
-                >
-                    Print
-                </button>
+                <button onClick={handlePrinter} className="btn ant-btn btn-primary btn-primary--outline">Print</button>
             </div>
 
             <Filter
@@ -148,17 +141,13 @@ const ReferReport = () => {
                 onSearch
                 dataReturn={handleSearch}
                 forRefererReport
-
             />
             <Table
                 columns={tableHead}
                 dataSource={newTableData}
             />
-        </ReferReportContainer>
+        </>
     )
 }
 
 export default ReferReport
-
-const ReferReportContainer = styledComponents.div`   
-`
