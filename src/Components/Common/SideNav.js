@@ -1,4 +1,3 @@
-// import { Menu} from 'antd'
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { MenuRoute, settingsMenu } from '../../Data/MenuRoute'
@@ -23,7 +22,7 @@ const SideNav = (props) => {
 
   useEffect(() => {
     statePass(collpsed)
-  },[collpsed])
+  }, [collpsed])
 
 
   return (
@@ -40,29 +39,38 @@ const SideNav = (props) => {
                 <img src={comlogo1} alt="luniva" /> :
                 <img src={comlogo} alt="luniva" />
             }
-
           </div>
+
           <Menu mode="inline" defaultSelectedKeys={['1']} style={{ background: '#fefefe', paddingBottom: '15%' }}>
-            {data.map(e => (
-              <Menu.Item key={e.key} icon={<i className={e.icon}></i>}>
-                <NavLink to={e?.path} className='navLInk' >
-                  {e.name}
-                </NavLink>
-              </Menu.Item>
-            ))}
+            {
+              data.length !== 0 ?
+                (
+                  data.map(e => (
+                    <Menu.Item key={e.key} icon={<i className={e.icon}></i>}>
+                      <NavLink to={e?.path} className='navLInk' >
+                        {e.name}
+                      </NavLink>
+                    </Menu.Item>
+                  ))
+                ) : ''
+            }
 
-
-            <SubMenu key="set1" title='Settings' icon={<i className='icon-line2-settings'></i>}>
-              {
-                menuData.map(e => (
-                  <Menu.Item key={e.key} icon={<i className={e.icon}></i>}>
-                    <NavLink to={e?.path} className='navLInk' >
-                      {e.name}
-                    </NavLink>
-                  </Menu.Item>
-                ))
-              }
-            </SubMenu>
+            {
+              menuData.length !== 0 ?
+                (
+                  <SubMenu key="set1" title='Settings' icon={<i className='icon-line2-settings'></i>}>
+                    {
+                      menuData.map(e => (
+                        <Menu.Item key={e.key} icon={<i className={e.icon}></i>}>
+                          <NavLink to={e?.path} className='navLInk' >
+                            {e.name}
+                          </NavLink>
+                        </Menu.Item>
+                      ))
+                    }
+                  </SubMenu>
+                ) : ''
+            }
           </Menu>
         </Sider>
       </Scrollbars>
@@ -116,16 +124,13 @@ const SideNavContainer = styled.div`
   .ant-menu-item:active{
     color: var(--primary);
     background-color: #f7f1e6;
-  }
-  
+  }  
   .ant-menu-item-selected a, .ant-menu-item-selected a:hover {
     color: var(--primary);
   }
-
   .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after{
     border-right: 3px solid var(--primary);
   }
-
   .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
     background-color: #f7f1e6;
   }
@@ -138,12 +143,6 @@ const SideNavContainer = styled.div`
   .ant-menu-item .ant-menu-item-icon{
     color: var(--primary)
   }
-
-  /* for sub menu */
-  /* .ant-menu-submenu-selected {
-    color: var(--primary)
-  } */
-
   .ant-menu-submenu-title .ant-menu-item-icon{
     color: var(--primary);
   }
