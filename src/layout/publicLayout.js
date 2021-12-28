@@ -13,16 +13,16 @@ const index = props => {
       {/* <AppHeader /> */}
       <Layout>
         <Content
-          className="site-layout-background"
-          style={{
-            padding: 24,
-            margin: 0,
-            // minHeight: 280,
-            height: '100vh',
-            justifyContent: 'center',
-            alignItems: 'center',
-            display: 'flex'
-          }}
+          // className="site-layout-background"
+          // style={{
+          //   padding: 24,
+          //   margin: 0,
+          //   // minHeight: 280,
+          //   height: '100vh',
+          //   justifyContent: 'center',
+          //   alignItems: 'center',
+          //   display: 'flex'
+          // }}
         >
           {props.children}
         </Content>

@@ -39,6 +39,12 @@ export const MenuRoute = [
     isactive: MenuSettings.reports,
   },
   {
+    icon: 'icon-graph',
+    key: 'finance',
+    name: 'Finance Dashbord',
+    path: '/finance'
+  },
+  {
     icon: 'icon-line2-doc',
     key: 'misreports',
     name: 'MIS Reports',

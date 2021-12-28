@@ -8,13 +8,17 @@ import { getLoginApi } from '../../services/loginService';
 import { Form, Input, Button } from 'antd';
 import styled from 'styled-components';
 import logo from '../../assets/images/logo.png';
+// import  logo from '../../assets/images/crystalDi.png'
+import crystslBkg from '../../assets/images/crystal.jpg'
 import { getItemNearApi } from '../../services/itemNewItemService'
+// import { getListofcompany } from '../../services/datametricService';
 
 export default function Login() {
   const dispatch = useDispatch();
   const { token, setToken } = useToken();
   const history = useHistory();
   const [tableData, setTableData] = useState([]);
+  const [companyDetail, setcompanyDetail] = useState([]);
   // const [visible, setVisible] = useState();
 
   const onFinish = (values) => {
@@ -53,7 +57,7 @@ export default function Login() {
         message.error('Username or password incorrect')
       }
     }))
-    
+
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -72,6 +76,13 @@ export default function Login() {
   useEffect(() => {
     getData();
   }, [])
+ 
+
+  // useEffect(() => {
+  //   dispatch(getListofcompany(data => {
+  //     setcompanyDetail(data[0])
+  //   }))
+  // }, [])
 
   const openNotification = (placement) => {
     if (tableData.length >= 1) {
@@ -87,53 +98,96 @@ export default function Login() {
 
   return (
     <LoginFormContainer>
-      <div className="logo">
-        <img src={logo} alt="" />
+      <div className="left" >
+          <img src={crystslBkg} alt="" />
       </div>
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+      <div className="right">
+        <div className="logo">
+          <img src={logo} alt="" />
+        </div>
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
         >
-          <Input autoFocus={true} />
-        </Form.Item>
+          <Form.Item
+            label="Username"
+            name="username"
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input autoFocus={true} />
+          </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password />
-        </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password />
+          </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
 
-        </Form.Item>
-      </Form>
+          </Form.Item>
+        </Form>
+      </div>
+
     </LoginFormContainer>
   )
 }
 
 const LoginFormContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   align-items: center;
-  gap: 20px;
+  // gap: 20px;
   .logo{
-    width: 300px;
+    width: 360px;
+    margin-bottom: 60px;
+    text-align: center;
+    @media(max-width: 768px){
+      width: 260px;
+      margin-bottom: 40px;
+    }
     img{
       width: 100%;
+    }
+  }
+  
+  .left{
+    display: flex;
+    flex: 0.5;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    img{
+      width: 100%;
+      object-fit: cover;
+      object-postion: ceter;
+    }
+    @media(max-width: 576px){
+      display: none;
+    }
+  }
+  .right{
+    display: flex;
+    flex: 0.4;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    @media(max-width: 576px){
+      flex: 1;
+      width: 100%;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
     }
   }
 `
