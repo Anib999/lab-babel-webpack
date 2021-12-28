@@ -8,7 +8,7 @@ import { MenuSettings } from './Data/MenuSettings';
 import PrivateRouter from './Routes/PrivateRouter';
 
 function App() {
-  // datametric
+  // datametric, dashbord
   return (
     <Suspense
       fallback={
@@ -20,7 +20,7 @@ function App() {
       <Switch>
 
         <Route exact path="/">
-          <Redirect to="/dashbord" />
+          <Redirect to="/datametric" />
         </Route>
 
         <PublicRoute
