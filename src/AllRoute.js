@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { AsyncAddCategory, AsyncAddConsumptionGroup, AsyncAddConsumptionLookGroup, AsyncAddItems, AsyncAddItemVsRatio, AsyncAddLocation, AsyncAddRack, AsyncAddType, AsyncAddUnits, AsyncAddWastage, AsyncAppLayout, AsyncCategory, AsyncConsumableReports, AsyncConsumptionIndex, AsyncConsumptionLookIndex, AsyncDashbord, AsyncGoodOut, AsyncGoodsIn, AsyncGoodsInAdd, AsyncGoodsInReports, AsyncGoodsOutAdd, AsyncGoodsOutReports, AsyncInOutConReports, AsyncinvsReports, AsyncItems, AsyncItemVsRatio, AsyncLocation, AsyncLocationStockReport, AsyncMinQuantityReport, AsyncRack, AsyncReports, AsyncSettings, AsyncStocks, AsyncType, AsyncUnits, AsyncWastage, AsyncAddGroupItemVsRatioVsConsumption, AsyncRequestorReport, AsyncTestTypeReport, AsyncReferReport, AsyncCareLab, AsyncRequestorSalesReport, AsyncDailySummary, AsyncDailyTransaction } from './App/asyncComponent';
+import { AsyncAddCategory, AsyncAddConsumptionGroup, AsyncAddConsumptionLookGroup, AsyncAddItems, AsyncAddItemVsRatio, AsyncAddLocation, AsyncAddRack, AsyncAddType, AsyncAddUnits, AsyncAddWastage, AsyncAppLayout, AsyncCategory, AsyncConsumableReports, AsyncConsumptionIndex, AsyncConsumptionLookIndex, AsyncDashbord, AsyncGoodOut, AsyncGoodsIn, AsyncGoodsInAdd, AsyncGoodsInReports, AsyncGoodsOutAdd, AsyncGoodsOutReports, AsyncInOutConReports, AsyncinvsReports, AsyncItems, AsyncItemVsRatio, AsyncLocation, AsyncLocationStockReport, AsyncMinQuantityReport, AsyncRack, AsyncReports, AsyncSettings, AsyncStocks, AsyncType, AsyncUnits, AsyncWastage, AsyncAddGroupItemVsRatioVsConsumption, AsyncRequestorReport, AsyncTestTypeReport, AsyncReferReport, AsyncCareLab, AsyncRequestorSalesReport, AsyncDailySummary, AsyncDailyTransaction, AsyncFinance } from './App/asyncComponent';
 import PrivateRouter from './Routes/PrivateRouter';
 
 function AllRoute() {
@@ -404,6 +404,12 @@ function AllRoute() {
                 exact
                 path='/datametric/dailytransaction'
                 component={AsyncDailyTransaction}
+                layout={AsyncAppLayout}
+            />
+            <PrivateRouter
+                exact
+                path='/finance'
+                component={AsyncFinance}
                 layout={AsyncAppLayout}
             />
         </>

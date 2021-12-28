@@ -56,7 +56,7 @@ const UserBarContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   border: 1px solid #fefefe;
-  padding: 8px 20px;
+  padding: 4px 20px;
   border-radius: 20px;
   background-color: #e95b29;
   color: #fefefe;

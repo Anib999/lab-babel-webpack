@@ -44,8 +44,8 @@ export default Notification
 const NotificationContainer = styled.div`
   i{
     color: var(--primary);
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border: 2px solid var(--primary);
     border-radius: 50%;
     display: flex;

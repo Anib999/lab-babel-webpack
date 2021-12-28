@@ -75,4 +75,7 @@ export const AsyncRequestorSalesReport = lazy(() => pMinDelay(import('../Compone
 export const AsyncDailySummary = lazy(() => pMinDelay(import('../Components/DataMetricReport/DailySummary'), 300));
 export const AsyncDailyTransaction = lazy(() => pMinDelay(import('../Components/DataMetricReport/DailyTransaction'), 300));
 
+export const AsyncFinance = lazy(() => pMinDelay(import('../Components/FinanceDashbord/index'), 300));
+
+
 export const AsyncNotFound = lazy(() => pMinDelay(import('../Components/Common/ErrorPage'), 300));
