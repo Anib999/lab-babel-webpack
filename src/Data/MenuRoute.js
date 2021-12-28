@@ -1,9 +1,12 @@
+import { MenuSettings } from "./MenuSettings"
+
 export const MenuRoute = [
   {
+    icon: 'icon-line2-home',
     key: 'dashbord',
     name: 'dashboard',
     path: '/',
-    icon: 'icon-line2-home'
+    isactive: MenuSettings.dashboard,
   },
   
   {
@@ -11,25 +14,29 @@ export const MenuRoute = [
     key: 'goodsin',
     name: 'goods in',
     path: '/goodsin',
+    isactive: MenuSettings.goodsin,
   },
   {
     icon: 'icon-line-shopping-bag',
     key: 'goodsOut',
     name: 'Goods Out',
-    path: '/goodsout'
+    path: '/goodsout',
+    isactive: MenuSettings.goodsout,
   },
   
   {
     icon: 'icon-line-trash',
     key: 'wastage',
     name: 'wastage',
-    path: '/wastage'
+    path: '/wastage',
+    isactive: MenuSettings.wastage,
   },
   {
     icon: 'icon-line2-doc',
     key: 'reports',
     name: 'Reports',
-    path: '/reports'
+    path: '/reports',
+    isactive: MenuSettings.reports,
   },
   {
     icon: 'icon-graph',
@@ -41,63 +48,73 @@ export const MenuRoute = [
     icon: 'icon-line2-doc',
     key: 'misreports',
     name: 'MIS Reports',
-    path: '/datametric'
+    path: '/datametric',
+    isactive: MenuSettings.misreports,
   },
 ]
 
 export const settingsMenu = [
   {
+    icon: 'icon-line-box',
     key: 'item',
     name: 'Item',
     path: '/item',
-    icon: 'icon-line-box',
+    isactive: MenuSettings.item,
   },
   {
     icon: 'icon-lab2',
     key: 'itemVsRatio',
     name: 'Item Vs Ratio',
-    path: '/itemvsratio'
+    path: '/itemvsratio',
+    isactive: MenuSettings.itemvsratio,
   },
   {
     icon: 'icon-line-stack',
     key: 'type',
     name: 'type',
-    path: '/type'
+    path: '/type',
+    isactive: MenuSettings.type,
   },
   {
     icon: 'icon-line-book',
     key: 'category',
     name: 'category',
-    path: '/category'
+    path: '/category',
+    isactive: MenuSettings.category,
   },
   {
     icon: 'icon-location',
     key: 'location',
     name: 'location',
-    path: '/location'
+    path: '/location',
+    isactive: MenuSettings.location,
   },
   {
     icon: 'icon-line-archive',
     key: 'rack',
     name: 'rack',
-    path: '/rack'
+    path: '/rack',
+    isactive: MenuSettings.rack,
   },
   {
     icon: 'icon-bar-chart',
     key: 'unit',
     name: 'unit',
-    path: '/units'
+    path: '/units',
+    isactive: MenuSettings.units,
   },
   {
     icon: 'icon-bar-chart',
     key: 'consumption',
     name: 'consumption',
-    path: '/consumption'
+    path: '/consumption',
+    isactive: MenuSettings.consumption,
   },
   {
     icon: 'icon-bar-chart',
     key: 'cons lookup',
     name: 'cons lookup',
-    path: '/consumptionlook'
+    path: '/consumptionlook',
+    isactive: MenuSettings.consumptionlook,
   },
 ]

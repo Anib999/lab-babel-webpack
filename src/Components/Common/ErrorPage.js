@@ -5,8 +5,8 @@ import styled from 'styled-components'
 const ErrorPage = () => {
   return (
     <ErrorPageContainer>
-      <img src="" alt="404 error" />
-      <h3>Under Construction ...</h3>
+      {/* <img src="" alt="404 error" /> */}
+      <h1>404 Page not found.</h1>
     </ErrorPageContainer>
   )
 }
