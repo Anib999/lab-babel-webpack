@@ -23,11 +23,33 @@ const PageHeader = ({ pageTitle, buttonTitle, buttonOnClick, csvLinkTitle, csvDa
     if (csvData.length !== 0) {
       let newWindow = window.open()
 
+      var adbs = require("ad-bs-converter");
+      var nepaliFromDate = fromToDate.fromdate;
+      var nepaliToDate = fromToDate.todate;
+      var neaplaiFromToDateString = [];
+      if (nepaliFromDate !== undefined) {
+        var nNepaliFromDate = nepaliFromDate.replaceAll("-", "/");
+        var nNepaliToDate = nepaliToDate.replaceAll("-", "/");
+        var converterNepaliFromDate = adbs.ad2bs(nNepaliFromDate);
+        var converterNepalitoDate = adbs.ad2bs(nNepaliToDate);
+        var converteNpFromDate = `${converterNepaliFromDate.en.year}-${converterNepaliFromDate.en.month}-${converterNepaliFromDate.en.day} `
+        var converteNpToDate = `${converterNepalitoDate.en.year}-${converterNepalitoDate.en.month}-${converterNepalitoDate.en.day} `
+        neaplaiFromToDateString.push(converteNpFromDate, converteNpToDate);
+      }
+      console.log(neaplaiFromToDateString);
+
+
       let newStyle = ``
       if (removetwo)
         newStyle = `<style>thead > tr> th:first-child, thead > tr> th:nth-child(2), tbody > tr > td:first-child,tbody > tr > td:nth-child(2){
         display: none;
-       }</style>`
+       }tbody > tr:last-child{
+    background-color: #f0f0f2;
+    }
+    tbody > tr:last-child > td{
+        font-size: 12px;
+        font-weight: 500;
+    }</style>`
 
       let refName = `
       <div class="gocenter">
@@ -41,7 +63,7 @@ const PageHeader = ({ pageTitle, buttonTitle, buttonOnClick, csvLinkTitle, csvDa
       ${selctorr !== undefined ? `${reportName} Name: ${csvData[0][selctorr]}` : ``}
       </div>
       <div>
-      From ${fromToDate?.fromdate} - To ${fromToDate?.todate}
+      <strong>From</strong> ${neaplaiFromToDateString[0]} - <strong>To</strong> ${neaplaiFromToDateString[1]}
       </div>
       </div>
       `;
