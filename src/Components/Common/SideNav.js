@@ -15,6 +15,7 @@ const SideNav = (props) => {
   const data = MenuRoute;
   const menuData = settingsMenu;
   const [collpsed, setcollpsed] = useState(false);
+  const [showSettings, setShowSettings] = useState(true);
 
   function oncollpse() {
     setcollpsed(!collpsed);
@@ -24,6 +25,9 @@ const SideNav = (props) => {
     statePass(collpsed)
   }, [collpsed])
 
+  useEffect(() => {
+    setShowSettings(!menuData.every(vendor => vendor['isactive'] === false));
+  }, [])
 
   return (
     <SideNavContainer>
@@ -45,31 +49,39 @@ const SideNav = (props) => {
             {
               data.length !== 0 ?
                 (
-                  data.map(e => (
-                    <Menu.Item key={e.key} icon={<i className={e.icon}></i>}>
-                      <NavLink to={e?.path} className='navLInk' >
-                        {e.name}
-                      </NavLink>
-                    </Menu.Item>
-                  ))
-                ) : ''
-            }
-
-            {
-              menuData.length !== 0 ?
-                (
-                  <SubMenu key="set1" title='Settings' icon={<i className='icon-line2-settings'></i>}>
-                    {
-                      menuData.map(e => (
+                  data.map(e => {
+                    if (e.isactive) {
+                      return (
                         <Menu.Item key={e.key} icon={<i className={e.icon}></i>}>
                           <NavLink to={e?.path} className='navLInk' >
                             {e.name}
                           </NavLink>
                         </Menu.Item>
-                      ))
+                      )
                     }
-                  </SubMenu>
+                  })
                 ) : ''
+            }
+
+            {
+              showSettings ? (
+                <SubMenu key="set1" title='Settings' icon={<i className='icon-line2-settings'></i>}>
+                  {
+                    menuData.map(e => {
+                      if (e.isactive) {
+                        return (
+                          <Menu.Item key={e.key} icon={<i className={e.icon}></i>}>
+                            <NavLink to={e?.path} className='navLInk' >
+                              {e.name}
+                            </NavLink>
+                          </Menu.Item>
+                        )
+                      }
+                    }
+                    )
+                  }
+                </SubMenu>
+              ) : ''
             }
           </Menu>
         </Sider>
