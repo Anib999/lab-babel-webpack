@@ -1,33 +1,82 @@
-import { Row } from 'antd'
-import React from 'react'
+import { message, Row } from 'antd'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import AppButton from './AppButton'
 import { CSVLink } from 'react-csv';
-import { Link, useHistory } from 'react-router-dom';
-import { useState } from 'react';
-import PrintFile from './PritFile';
+import { useDispatch } from "react-redux"
+import { getListofcompany } from '../../services/datametricService';
+import { newTableStyles } from './TableStyles';
 
-const PageHeader = ({ pageTitle, buttonTitle, buttonOnClick, csvLinkTitle, csvDataName, csvData, forGroup, forGroupButtonClick, forCon, forConButtonClick, printFileName,
-  printTitle,
-  getDate,
-  tableHead,
-  dataSource }) => {
+const PageHeader = ({ pageTitle, buttonTitle, buttonOnClick, csvLinkTitle, csvDataName, csvData, forGroup, forGroupButtonClick, forCon, forConButtonClick, printFileName, reportName, tableHead, fromToDate, removetwo, selctorr }) => {
+  const dispatch = useDispatch();
+  const [companyDetail, setcompanyDetail] = useState([]);
 
-    // console.log(getDate);
+  useEffect(() => {
+    dispatch(getListofcompany(data => {
+      setcompanyDetail(data[0])
+    }))
+  }, [])
 
-  const [printData, setprintData] = useState({});
-  // const printDataFunction =() => {
-  //   let arr = [printTitle, getDate, tableHead, dataSource]
-  //   setprintData(arr)
-  // }\
-  // console.log(dataSource);
-  
-  // useState(()=> {
-  //   let arr = {printTitle, getDate, tableHead, dataSource}
-  //   setprintData(arr)
-  // }, [dataSource])
+  //print handler
+  //needs csvData, tableHead, fromTodate
+  const printHandle = () => {
+    if (csvData.length !== 0) {
+      let newWindow = window.open()
 
-  // console.log('this is pirt data',printData);
+      let newStyle = ``
+      if (removetwo)
+        newStyle = `<style>thead > tr> th:first-child, thead > tr> th:nth-child(2), tbody > tr > td:first-child,tbody > tr > td:nth-child(2){
+        display: none;
+       }</style>`
+
+      let refName = `
+      <div class="gocenter">
+          <h2> ${companyDetail.CompanyName} </h2>
+          <p> ${companyDetail.COmpanyAddress} </p>
+          <p>Contact no:${companyDetail.COmpanyContactNo} </p>
+          <h2>${reportName} Report</h2>
+      </div>
+      <div class="headingContent">
+      <div>
+      ${selctorr !== undefined ? `${reportName} Name: ${csvData[0][selctorr]}` : ``}
+      </div>
+      <div>
+      From ${fromToDate?.fromdate} - To ${fromToDate?.todate}
+      </div>
+      </div>
+      `;
+
+      let tableBody = '';
+      let tableHeadHtml = '<thead>';
+      let columns = [];
+
+      tableHead.forEach(ele => {
+        tableHeadHtml += `<th>${ele?.dataIndex}</th>`;
+        columns.push(ele.dataIndex);
+      })
+      tableHeadHtml += '</thead>';
+
+      csvData.forEach(ele => {
+        tableBody = tableBody + '<tr>'
+        columns.forEach(cell => {
+          tableBody = tableBody + '<td>' + ele[cell] + '</td>'
+        })
+        tableBody = tableBody + '</tr>'
+      })
+
+      let allTable = `<table>${tableHeadHtml}${tableBody}</table>`
+
+      newWindow.document.body.innerHTML = newTableStyles + newStyle + refName + allTable
+
+      setTimeout(function () {
+        newWindow.print();
+        newWindow.close();
+      }, 300);
+
+    } else {
+      message.info('select some data')
+    }
+  }
 
   return (
     <PageHeaderContainer>
@@ -49,16 +98,13 @@ const PageHeader = ({ pageTitle, buttonTitle, buttonOnClick, csvLinkTitle, csvDa
 
           {
             printFileName &&
-            <div className='link'>
-              <Link filename={printFileName} className="btn ant-btn btn-primary btn-primary--outline" 
-              to='/printfile'
-              // target={"_blank"}
-              // rel="noopener noreferrer"
-                // printData={printData}
-              >print</Link>
-            </div>
+            <button
+              onClick={printHandle}
+              className="btn ant-btn btn-primary btn-primary--outline"
+            >
+              Print
+            </button>
           }
-
 
         </Row>
       </Row>

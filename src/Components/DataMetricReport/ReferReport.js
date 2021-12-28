@@ -5,7 +5,6 @@ import PageHeader from '../Common/pageHeader'
 import { getReferReport } from "../../services/datametricService";
 import { Table } from "antd";
 import { getAllPritDataSucess } from "../../store/slices/printSlice";
-import { newTableStyles } from "../Common/TableStyles";
 
 const ReferReport = () => {
     const dispatch = useDispatch();
@@ -25,7 +24,6 @@ const ReferReport = () => {
 
         }))
     }
-    // console.log("date",printData)
 
     const dataRet = (val) => {
         let data = {
@@ -36,8 +34,6 @@ const ReferReport = () => {
         getDataForReport(data)
         setfromToDate(data);
     }
-    
-
 
     useEffect(() => {
         createTableHead()
@@ -58,6 +54,7 @@ const ReferReport = () => {
             settableHead(data);
         }
     }
+    
     const handleSearch = (val) => {
         let data = printData
 
@@ -72,54 +69,6 @@ const ReferReport = () => {
         }
     }
 
-    const handlePrinter = () => {
-        if (tableHead.length !== 0) {
-            let newWindow = window.open()
-
-            let refName = `<h3 class="gocenter">Referer Report</h3><div class="headingContent">
-        <div>
-        Referer Name: ${newTableData[0]['Refer Name']}
-        </div>
-        <div>
-        From ${fromToDate?.fromdate} - To ${fromToDate?.todate}
-        </div>
-        </div>
-        `;
-
-            let tableBody = '';
-            let tableHeadHtml = '<thead>';
-            let columns = [];
-            let newStyle = `<style>thead > tr> th:first-child, tbody > tr > td:first-child{
-                display: none;
-               }</style>`
-
-            tableHead.forEach(ele => {
-                tableHeadHtml += `<th>${ele?.title}</th>`;
-                columns.push(ele.title);
-            })
-            tableHeadHtml += '</thead>';
-
-            newTableData.forEach(ele => {
-                tableBody = tableBody + '<tr>'
-
-                columns.forEach(cell => {
-                    tableBody = tableBody + '<td>' + ele[cell] + '</td>'
-                })
-
-                tableBody = tableBody + '</tr>'
-            })
-
-            let allTable = `<table>${tableHeadHtml}${tableBody}</table>`
-
-            newWindow.document.body.innerHTML = newTableStyles + newStyle + refName + allTable
-
-            setTimeout(function () {
-                newWindow.print();
-                newWindow.close();
-            }, 300);
-        }
-    }
-
     return (
         <>
             <PageHeader
@@ -127,13 +76,13 @@ const ReferReport = () => {
                 csvLinkTitle='Export CSV'
                 csvData={newTableData}
                 csvDataName='RefererReport.csv'
-            >
-
-            </PageHeader>
-            <div className="printBtncontainer">
-                <button onClick={handlePrinter} className="btn ant-btn btn-primary btn-primary--outline">Print</button>
-            </div>
-
+                printFileName
+                reportName='Refer'
+                tableHead={tableHead}
+                fromToDate={fromToDate}
+                removetwo
+                selctorr={'Refer Name'}
+            />
             <Filter
                 dateRange
                 dateRet={dataRet}

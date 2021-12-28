@@ -4,7 +4,6 @@ import Filter from '../Common/Filter'
 import PageHeader from '../Common/pageHeader'
 import { getRequestorReport } from "../../services/datametricService";
 import { Table } from "antd";
-import { newTableStyles } from "../Common/TableStyles";
 
 const RequestorReport = () => {
     const dispatch = useDispatch();
@@ -38,8 +37,6 @@ const RequestorReport = () => {
         if (tableData.length !== 0) {
             let tableKeys = Object.keys(tableData[0]);
             let data = []
-            let labels = [];
-
             tableKeys.forEach(ele => {
                 data.push({
                     title: ele,
@@ -59,54 +56,6 @@ const RequestorReport = () => {
         }
     }
 
-    const handlePrinter = () => {
-        if (tableHead.length !== 0) {
-            let newWindow = window.open()
-
-            let refName = `<h3 class="gocenter">Requerstor Report</h3><div class="headingContent">
-        <div>
-        Requestor name: ${newTableData[0]['Requestor Name']}
-        </div>
-        <div>
-        From ${fromToDate?.fromdate} - To ${fromToDate?.todate}
-        </div>
-        </div>
-        `;
-
-            let tableBody = '';
-            let tableHeadHtml = '<thead>';
-            let columns = [];
-            let newStyle = `<style>thead > tr> th:first-child, tbody > tr > td:first-child{
-                 display: none;
-                }</style>`
-
-            tableHead.forEach(ele => {
-                tableHeadHtml += `<th>${ele?.title}</th>`;
-                columns.push(ele.title);
-            })
-            tableHeadHtml += '</thead>';
-
-            newTableData.forEach(ele => {
-                tableBody = tableBody + '<tr>'
-
-                columns.forEach(cell => {
-                    tableBody = tableBody + '<td>' + ele[cell] + '</td>'
-                })
-
-                tableBody = tableBody + '</tr>'
-            })
-
-            let allTable = `<table>${tableHeadHtml}${tableBody}</table>`
-
-            newWindow.document.body.innerHTML = newTableStyles + newStyle + refName + allTable
-
-            setTimeout(function () {
-                newWindow.print();
-                newWindow.close();
-            }, 300);
-        }
-    }
-
     return (
         <>
             <PageHeader
@@ -114,10 +63,13 @@ const RequestorReport = () => {
                 csvLinkTitle='Export CSV'
                 csvData={newTableData}
                 csvDataName='requestorReport.csv'
+                printFileName
+                reportName='Requestor'
+                tableHead={tableHead}
+                fromToDate={fromToDate}
+                removetwo
+                selctorr={'Requestor Name'}
             />
-            <div className="printBtncontainer">
-                <button onClick={handlePrinter} className="btn ant-btn btn-primary btn-primary--outline">Print</button>
-            </div>
             <Filter
                 dateRange
                 dateRet={dataRet}
