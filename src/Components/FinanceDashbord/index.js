@@ -1,6 +1,6 @@
 import { Col, Row, Table } from 'antd';
-import React from 'react'
-import styledComponents from 'styled-components';
+import React, { useState } from 'react'
+import styled from 'styled-components';
 import Filter from '../Common/Filter';
 import PageHeader from '../Common/pageHeader';
 import { ChartColor } from '../Common/ChartColor'
@@ -74,7 +74,20 @@ const Index = () => {
   //  for referer =Table2
   // for requestor = Table3
   // for over all table = Table4
- 
+
+  const [PayPie, setPayPie ] = useState([]);
+  const [PayBar, setPayBar ] = useState([]);
+  const [PayRef, setPayRef ] = useState([]);
+  const [PayReq, setPayReq ] = useState([]);
+  const [PayTable, setPayTable ] = useState([]);
+  
+  const [PayPieLabel, setPayPieLabel ] = useState([]);
+  const [PayBarLabel, setPayBarLabel ] = useState([]);
+  const [PayRefLabel, setPayRefLabel ] = useState([]);
+  const [PayReqLabel, setPayReqLabel ] = useState([]);
+  const [PayTableLabel, setPayTableLabel ] = useState([]);
+
+
   const labels = ['potato', 'brinjasl', 'coma']
   const financeData = [44, 22, 11]
 
@@ -170,7 +183,7 @@ const Index = () => {
 }
 export default Index;
 
-const FinenceDashbordContainer = styledComponents.div`
+const FinenceDashbordContainer = styled.div`
   .financeCards{
     background: rgba( 255, 255, 255, 1 );
     box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
