@@ -35,6 +35,7 @@ const SideNav = (props) => {
         autoHide
         autoHeight
         autoHeightMin={'100vh'}
+        
       >
         <Sider collapsible collapsed={collpsed} onCollapse={oncollpse} className='sideNav'>
           <div className="logo">
@@ -45,7 +46,7 @@ const SideNav = (props) => {
             }
           </div>
 
-          <Menu mode="inline" defaultSelectedKeys={['1']} style={{ background: '#fefefe', paddingBottom: '15%' }}>
+          <Menu mode="inline" defaultSelectedKeys={['1']} style={{ background: 'var(--secondaryBackground)', paddingBottom: '15%' }}>
             {
               data.length !== 0 ?
                 (
@@ -95,7 +96,7 @@ export default SideNav
 const SideNavContainer = styled.div`
   height: 100%;
   padding: 20px 0;
-    background-color: #Fefefe;
+    background-color: var(--secondaryBackground);
     box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.17 );
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
@@ -106,8 +107,9 @@ const SideNavContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 30px;
-    margin-bottom: 10px;
+    height: 40px;
+    padding-bottom: 10px;
+ 
     img{
       height: 100%;
     }
@@ -125,7 +127,7 @@ const SideNavContainer = styled.div`
     }
   }
   .ant-layout-sider{
-    background-color: #fefefe;
+    background-color: var(--secondaryBackground);;
   }
   .ant-layout-sider-trigger{
     background-color: var(--primary);
@@ -140,9 +142,13 @@ const SideNavContainer = styled.div`
   .ant-menu-item-selected a, .ant-menu-item-selected a:hover {
     color: var(--primary);
   }
+  .ant-menu-inline, .ant-menu-vertical{
+    border-right: none;
+  }
   .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after{
     border-right: 3px solid var(--primary);
   }
+  
   .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
     background-color: #f7f1e6;
   }
@@ -161,4 +167,8 @@ const SideNavContainer = styled.div`
   .ant-menu-light .ant-menu-submenu-title:hover{
     color: var(--primary);
   }
+  .ant-menu-sub.ant-menu-inline{
+    background-color: var(--secondaryBackground);
+  }
+  
 `

@@ -32,7 +32,7 @@ const NavBarContainer = styled.div`
 /*  padding: 20px; */
   padding: 15px;
   cursor: pointer;
-  background-color: #fefefe;
+  background-color: var(--secondaryBackground);
 
   position: fixed;
   z-index: 99;

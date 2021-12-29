@@ -137,7 +137,7 @@ const PageHeader = ({ pageTitle, buttonTitle, buttonOnClick, csvLinkTitle, csvDa
 export default PageHeader
 
 const PageHeaderContainer = styled.div`
-  background-color: #fefefe;
+  /* background-color: #fefefe; */
   padding: 10px 10px;
   width: 100%;
   align-items: center;

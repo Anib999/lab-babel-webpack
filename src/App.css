@@ -1,13 +1,15 @@
 /* @import '~antd/dist/antd.css'; */
 
-:root {
+/* :root {
   --primary: #e95b29;
-  --secondary: #3487f3;
+  --secondary: #195eb8;
   --primaryBackground: #f0f0f0;
-}
+  --secondaryBackground: #fefefe;
+} */
 .ant-layout-content{
   background-color: var(--primaryBackground);
 }
+
 .btn-primary--outline{
   background-color: transparent;
   color:  var(--secondary);
@@ -75,7 +77,7 @@ h2 {
   color: var(--primary);
 }
 h4 {
-  color: #fefefe;
+  color: var(--primary);
 }
 .pageTtitle {
   font-size: 30px;
@@ -142,7 +144,7 @@ h4 {
   padding: 0 10px;
 }
 .maiTopContainer{
-  background: rgba( 255, 255, 255, 0.25 );
+  background: var(--cardColor);
   box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );

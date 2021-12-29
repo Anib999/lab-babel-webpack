@@ -6,10 +6,28 @@ import { AsyncAddCategory, AsyncAddConsumptionGroup, AsyncAddConsumptionLookGrou
 import PublicRoute from './Routes/PublicRoute';
 import { MenuSettings } from './Data/MenuSettings';
 import PrivateRouter from './Routes/PrivateRouter';
+import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
+
+
 
 function App() {
   // datametric, dashbord
+  // const { createGlobalStyle } = styled;
+
+const Potato = createGlobalStyle`
+  :root {
+  --primary: #e95b29;
+  --secondary: #195eb8;
+  --primaryBackground: #f0f0f0;
+  --secondaryBackground: #fefefe;
+  --cardColor: #fefefe;
+  }
+`
   return (
+    
+    <>
+      <Potato/>
     <Suspense
       fallback={
         <div className='fallback-container'>
@@ -587,7 +605,9 @@ function App() {
 
       </Switch>
     </Suspense>
+    </>
   )
 }
 
 export default App;
+

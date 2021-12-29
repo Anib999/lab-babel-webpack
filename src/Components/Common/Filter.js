@@ -307,7 +307,7 @@ const Filter = ({ dataReturn, ...props }) => {
         <Col lg={20} md={24} sm={24}>
           <Row className="filterRow" align='bottom'>
             {itemType &&
-              <Col lg={10} md={12} sm={11} xs={24}>
+              <Col lg={8} md={12} sm={11} xs={24}>
                 <span className='labelTop'>Item Type</span>
                 <Select style={{ width: '100%' }} defaultValue="0" onChange={(val) => { setiType(val) }}>
                   <Option value="0">All</Option>
@@ -325,7 +325,7 @@ const Filter = ({ dataReturn, ...props }) => {
               </Col>
             }
             {categroryType &&
-              <Col lg={10} md={12} sm={11} xs={24}>
+              <Col lg={8} md={12} sm={11} xs={24}>
                 <span className='labelTop'>Category Type</span>
                 <Select style={{ width: '100%' }} defaultValue="0" onChange={(val) => { setCatType(val) }} size='default'>
                   <Option value="0">All</Option>
@@ -526,7 +526,7 @@ const Filter = ({ dataReturn, ...props }) => {
 export default Filter
 
 const FilterContainer = styled.div`
-  background-color: #fefefe;
+  /* background-color: #fefefe; */
   padding: 5px;
   .filterRow > div {
     padding: 4px;
