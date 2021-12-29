@@ -39,11 +39,11 @@ const AppButtonContainer = styled.div`
     letter-spacing: 1px;
     justify-content: center;
     font-weight: 400;
-    border: 2px solid var(--primary);
+    border: 1px solid var(--primary);
     &:hover{
       background-color: transparent;
       color: var(--primary);
-      border: 2px solid var(--primary);
+      border: 1px solid var(--primary);
     }
   }
   .primary-btn-outline{
@@ -56,11 +56,11 @@ const AppButtonContainer = styled.div`
     font-size: 16px;
     letter-spacing: 1px;
     font-weight: 400;
-    border: 2px solid  var(--secondary);
+    border: 1px solid  var(--secondary);
     &:hover{
       background-color:   var(--secondary);
       color: #fefefe;
-      border: 2px solid var(--secondary);
+      border: 1px solid var(--secondary);
     }
   }
 `

@@ -172,6 +172,8 @@ export const GetListOfUserForMetric = 'GetListOfUserForMetric';
  * @param:
  */
 export const GetCompanyDetials = 'GetCompanyDetials';
+
+export const GetDataMetricReportByReportTypeAndDateRange ='GetDataMetricReportByReportTypeAndDateRange';
 //carelabdatametric services only dont mix up
 
 //POST

@@ -67,8 +67,18 @@ const columns = [
 
 
 const Index = () => {
+
+  // getDataMetricReportByReportTypeAndDateRange
+  // for pie [payment report] = ReportDetails
+  // for bar [payment report] = Table1
+  //  for referer =Table2
+  // for requestor = Table3
+  // for over all table = Table4
+ 
   const labels = ['potato', 'brinjasl', 'coma']
   const financeData = [44, 22, 11]
+
+
   const dataDo = {
     labels,
     datasets: [
