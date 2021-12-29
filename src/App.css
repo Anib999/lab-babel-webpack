@@ -2,8 +2,29 @@
 
 :root {
   --primary: #e95b29;
+  --secondary: #3487f3;
+  --primaryBackground: #f0f0f0;
 }
-
+.ant-layout-content{
+  background-color: var(--primaryBackground);
+}
+.btn-primary--outline{
+  background-color: transparent;
+  color:  var(--secondary);
+  border-radius: 3px!important;
+  min-height: 30PX;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  border: 2px solid  var(--secondary);
+}
+.btn-primary--outline:hover{
+  background-color:   var(--secondary);
+  color: #fefefe;
+  border: 2px solid var(--secondary);
+}
 .App {
   text-align: center;
 }
@@ -95,6 +116,20 @@ h4 {
 .tableisRes {
   overflow: auto;
   background-color: #fefefe;
+  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 7px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  overflow: hidden;
+}
+.tableWidth{
+  overflow-x: scroll;
+  -ms-overflow-style: hidden;
+  scrollbar-width: none;
+}
+.tableWidth::-webkit-scrollbar{
+  display: none;
 }
 
 .printBtncontainer {
@@ -105,4 +140,14 @@ h4 {
   justify-content: end;
   width: 100%;
   padding: 0 10px;
+}
+.maiTopContainer{
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 7px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  overflow: hidden;
+  margin-bottom: 20px;
 }

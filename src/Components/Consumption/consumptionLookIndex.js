@@ -9,109 +9,100 @@ import { consumptionLookupApi } from '../../services/consumptionService';
 import Filter from '../Common/Filter';
 
 const ConsumptionLookIndex = () => {
-    const history = useHistory();
-    const dispatch = useDispatch();
-    const [goodsList, setgoodsList] = useState([])
-    const [newgoodsList,  setnewgoodsList]= useState([])
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [goodsList, setgoodsList] = useState([])
+  const [newgoodsList, setnewgoodsList] = useState([])
 
-    const columns = [
-        {
-            title: 'CId',
-            dataIndex: 'CId',
-            key: 'CId',
-        },
-        {
-            title: 'Consumption Group Name',
-            dataIndex: 'ConsumptionGroupName',
-            key: 'ConsumptionGroupId',
-        },
-        {
-            title: 'Test Name',
-            dataIndex: 'Testname',
-            key: 'TestId',
-        },
-        {
-            title: 'Is Active',
-            dataIndex: 'IsActive',
-            key: 'IsActive',
-            render: (text) => {
-                let retText = 'Inactive'
-                let retColor = 'red'
-                if (text === true) {
-                    retText = 'Active'
-                    retColor = 'green'
-                }
-                return <Tag color={retColor}>{retText}</Tag>
-            },
-        },
-        {
-            title: 'Action',
-            key: 'action',
-            render: (text, record) => (
-                <Space size="middle">
-                    <Edit onClick={() => history.push(`/consumptionlook/edit/${record.CId}`)}>Edit</Edit>
-                </Space>
-            )
+  const columns = [
+    {
+      title: 'CId',
+      dataIndex: 'CId',
+      key: 'CId',
+    },
+    {
+      title: 'Consumption Group Name',
+      dataIndex: 'ConsumptionGroupName',
+      key: 'ConsumptionGroupId',
+    },
+    {
+      title: 'Test Name',
+      dataIndex: 'Testname',
+      key: 'TestId',
+    },
+    {
+      title: 'Is Active',
+      dataIndex: 'IsActive',
+      key: 'IsActive',
+      render: (text) => {
+        let retText = 'Inactive'
+        let retColor = 'red'
+        if (text === true) {
+          retText = 'Active'
+          retColor = 'green'
         }
-    ]
-
-    useEffect(() => {
-        getLabData()
-    }, [])
-
-    const getLabData = () => {
-        dispatch(consumptionLookupApi((val) => {
-            setgoodsList(val)
-            setnewgoodsList(val)
-        }))
+        return <Tag color={retColor}>{retText}</Tag>
+      },
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (text, record) => (
+        <Space size="middle">
+          <Edit onClick={() => history.push(`/consumptionlook/edit/${record.CId}`)}>Edit</Edit>
+        </Space>
+      )
     }
-     const handleSearch = (val) => {
-        if(val === undefined || val === ''){
-            setnewgoodsList(goodsList)
-        }else{
-            setnewgoodsList(val) 
-        }
-      }
+  ]
+
+  useEffect(() => {
+    getLabData()
+  }, [])
+
+  const getLabData = () => {
+    dispatch(consumptionLookupApi((val) => {
+      setgoodsList(val)
+      setnewgoodsList(val)
+    }))
+  }
+  const handleSearch = (val) => {
+    if (val === undefined || val === '') {
+      setnewgoodsList(goodsList)
+    } else {
+      setnewgoodsList(val)
+    }
+  }
 
 
-    return (
-        <ConsumptionLookIndexContainer>
-            <PageHeader
-                buttonTitle='Add Look up'
-                pageTitle='Consumption Look Up'
-                buttonOnClick={() => history.push('/consumptionlook/add')}
-            />
-            <Filter
-                onSearch
-                toCompareData={goodsList}
-                // forGoodsIn
-                dataReturn={handleSearch}
-                forConsumptionLookUp
-            ></Filter>
-            <div className="tableisRes">
-                <Table className='tableWidth'
-                    columns={columns}
-                    dataSource={newgoodsList}
-                />
-            </div>
+  return (
+    <ConsumptionLookIndexContainer>
+      <div className="maiTopContainer">
+        <PageHeader
+          buttonTitle='Add Look up'
+          pageTitle='Consumption Look Up'
+          buttonOnClick={() => history.push('/consumptionlook/add')}
+        />
+        <Filter
+          onSearch
+          toCompareData={goodsList}
+          // forGoodsIn
+          dataReturn={handleSearch}
+          forConsumptionLookUp
+        ></Filter>
+      </div>
+      <div className="tableisRes">
+        <Table className='tableWidth'
+          columns={columns}
+          dataSource={newgoodsList}
+        />
+      </div>
 
-        </ConsumptionLookIndexContainer>
-    )
+    </ConsumptionLookIndexContainer>
+  )
 }
 
 export default ConsumptionLookIndex
 
 const ConsumptionLookIndexContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
-
-  .tableWidth{
-    width: auto;
-  }
+  
 `

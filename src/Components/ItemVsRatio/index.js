@@ -109,6 +109,7 @@ const Index = () => {
 
   return (
     <ItemContainer>
+      <div className="maiTopContainer">
       <PageHeader
         buttonTitle='Add Item Vs Ratio'
         pageTitle='Item Vs Ratio'
@@ -121,7 +122,7 @@ const Index = () => {
         forConButtonClick={() => history.push('./itemvsratio/add/itemconsumption')}
 
       ></PageHeader>
-      <div className="top"></div>
+      
       <Filter
         onSearch
         toCompareData={tableData}
@@ -129,8 +130,9 @@ const Index = () => {
         dataReturn={handleSearch}
         forItemVsRatio
       ></Filter>
+      </div>
       <div className="tableisRes">
-        <Table
+        <Table className='tableWidth'
           columns={columns}
           dataSource={newTableData}
         />
@@ -143,12 +145,5 @@ const Index = () => {
 export default Index
 
 const ItemContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
+  
 `

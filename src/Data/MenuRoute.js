@@ -41,8 +41,9 @@ export const MenuRoute = [
   {
     icon: 'icon-graph',
     key: 'finance',
-    name: 'Finance Dashbord',
-    path: '/finance'
+    name: 'Finance',
+    path: '/finance',
+    isactive: MenuSettings.finance
   },
   {
     icon: 'icon-line2-doc',

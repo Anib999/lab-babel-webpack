@@ -59,13 +59,13 @@ const columns = [
 const NewGoodsOutReport = () => {
   const dispatch = useDispatch();
   const [goodsList, setgoodsList] = useState([]);
-  const [goodsOutName, setGoodsOutName]= useState([]);
+  const [goodsOutName, setGoodsOutName] = useState([]);
   const [goodLister, setgoodLister] = useState([])
   const [newGoodsList, setnewGoodsList] = useState([]);
 
   const graphData = (data) => {
     dispatch(getGoodsOutCountApi(data, (val) => {
-     
+
       let PushedGoodsName = []
       setgoodsList(val)
       setnewGoodsList(val);
@@ -73,9 +73,9 @@ const NewGoodsOutReport = () => {
         PushedGoodsName.push(ele?.ItemName)
       })
 
-      var filteredArray = PushedGoodsName.filter(function(item, pos){
-        return PushedGoodsName.indexOf(item)=== pos; 
-      });      
+      var filteredArray = PushedGoodsName.filter(function (item, pos) {
+        return PushedGoodsName.indexOf(item) === pos;
+      });
       setGoodsOutName(filteredArray)
     }))
   }
@@ -86,30 +86,30 @@ const NewGoodsOutReport = () => {
     retunDa()
   }, [goodsOutName])
 
-  const retunDa = () => {    
+  const retunDa = () => {
     const retDaa = groupData(goodsList).children
-    
+
     let mainArrDataset = []
 
     retDaa.forEach(ele => {
       let totArr = []
       ele.children.forEach(el => {
         totArr.push(el.GoodsInCount)
-        })
-        let a = totArr.reduce((a, b) => a + b, 0);
-        mainArrDataset.push(a);
+      })
+      let a = totArr.reduce((a, b) => a + b, 0);
+      mainArrDataset.push(a);
     })
     setgoodLister(mainArrDataset)
 
   }
 
   const groupData = (d) => {
-    let g = Object.entries(d.reduce((r,c)=>(r[c.ItemName]=[...r[c.ItemName]||[], c],r),{}))
-    return g.reduce((r,c) => (
+    let g = Object.entries(d.reduce((r, c) => (r[c.ItemName] = [...r[c.ItemName] || [], c], r), {}))
+    return g.reduce((r, c) => (
       r.children.push(
-       {children: c[1]}), r),{children:[]}
-       )
-    }
+        { children: c[1] }), r), { children: [] }
+    )
+  }
 
   const dataRet = (val) => {
     let data = {
@@ -167,33 +167,33 @@ const NewGoodsOutReport = () => {
     }
   };
   const handleSearch = (val) => {
-    if(val === undefined || val === ''){
+    if (val === undefined || val === '') {
       setnewGoodsList(goodsList)
-    }else{
-      setnewGoodsList(val) 
+    } else {
+      setnewGoodsList(val)
     }
   }
 
   return (
     <NewGoodsOutContainer>
-      <PageHeader
-
-        pageTitle='Goods Out Report'
-        csvLinkTitle='Export csv'
-        csvData={newGoodsList}
-        csvDataName='goodsOutReport.csv'
-        
-      />
-      <Filter
-        dateRange
-        dateRet={dataRet}
-        itemName
-        onSearch
-        toCompareData={goodsList}
-        forGoodsIn
-        dataReturn={handleSearch}
-        serchButton
-      />
+      <div className="maiTopContainer">
+        <PageHeader
+          pageTitle='Goods Out Report'
+          csvLinkTitle='Export csv'
+          csvData={newGoodsList}
+          csvDataName='goodsOutReport.csv'
+        />
+        <Filter
+          dateRange
+          dateRet={dataRet}
+          itemName
+          onSearch
+          toCompareData={goodsList}
+          forGoodsIn
+          dataReturn={handleSearch}
+          serchButton
+        />
+      </div>
       <div className="tableisRes">
         <Table className='tableWidth'
           columns={columns}
@@ -214,16 +214,5 @@ const NewGoodsOutReport = () => {
 export default NewGoodsOutReport
 
 const NewGoodsOutContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
-
-  .tableWidth{
-    width: auto;
-  }
+ 
 `

@@ -62,26 +62,28 @@ const Index = () => {
     }))
   }
   const handleSearch = (val) => {
-    if(val === undefined || val === ''){
+    if (val === undefined || val === '') {
       setnewTableData(tableData)
-    }else{
-      setnewTableData(val) 
+    } else {
+      setnewTableData(val)
     }
   }
 
   return (
     <ItemContainer>
-      <PageHeader pageTitle="Rack" buttonTitle='Add Rack' buttonOnClick={() => history.push('./rack/add')}></PageHeader>
-      <Filter locateRange={locateRange} serchButton></Filter>
+      <div className="maiTopContainer">
+        <PageHeader pageTitle="Rack" buttonTitle='Add Rack' buttonOnClick={() => history.push('./rack/add')}></PageHeader>
+        <Filter locateRange={locateRange} serchButton></Filter>
+        <Filter
+          onSearch
+          toCompareData={tableData}
+          // forGoodsIn
+          dataReturn={handleSearch}
+          forRack
+        ></Filter>
+      </div>
       <div className="tableisRes">
-      <Filter
-        onSearch
-        toCompareData={tableData}
-        // forGoodsIn
-        dataReturn={handleSearch}
-        forRack
-      ></Filter>
-        <Table
+        <Table className='tableWidth'
           columns={columns}
           dataSource={newTableData}
         />
@@ -93,12 +95,5 @@ const Index = () => {
 export default Index
 
 const ItemContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
+  
 `

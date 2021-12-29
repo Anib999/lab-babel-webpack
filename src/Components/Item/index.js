@@ -39,7 +39,7 @@ const Index = () => {
       dataIndex: 'Location',
       key: 'Location',
       render: (text, record) => {
-        if(text !== null){
+        if (text !== null) {
           return `${text} (${record.Rack})`;
         }
         return '';
@@ -78,38 +78,40 @@ const Index = () => {
   }
 
   const henadleSearch = (val) => {
-    if(val === undefined || val=== ''){
+    if (val === undefined || val === '') {
       setnewTableData(tableData)
-    }else{
+    } else {
       setnewTableData(val)
     }
   }
 
   return (
     <ItemContainer>
-      <PageHeader
-        buttonTitle='Add Item'
-        pageTitle='Item'
-        buttonOnClick={() => history.push('./item/add')}
-      ></PageHeader>
-      <Filter
-        itemType
-        categroryType
-        dataRet={dataRet}
-        serchButton
-        onSearch
-        toCompareData={tableData}
-        forItem
-        dataReturn={henadleSearch}
-      />
+      <div className="maiTopContainer">
+        <PageHeader
+          buttonTitle='Add Item'
+          pageTitle='Item'
+          buttonOnClick={() => history.push('./item/add')}
+        ></PageHeader>
+        <Filter
+          itemType
+          categroryType
+          dataRet={dataRet}
+          serchButton
+          onSearch
+          toCompareData={tableData}
+          forItem
+          dataReturn={henadleSearch}
+        />
+      </div>
       <div className="top"></div>
       <div className="tableisRes">
-      <Table className='margin-bottom-table'
-        columns={columns}
-        dataSource={newTableData}
-      />
+        <Table className='tableWidth'
+          columns={columns}
+          dataSource={newTableData}
+        />
       </div>
-     
+
     </ItemContainer>
   )
 }
@@ -117,13 +119,6 @@ const Index = () => {
 export default Index
 
 const ItemContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
+
   
 `

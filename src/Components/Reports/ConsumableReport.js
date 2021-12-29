@@ -53,7 +53,7 @@ const ConsumableReport = () => {
             })
 
             tableData.forEach(ele => {
-                if(ele.ItemName !== null)
+                if (ele.ItemName !== null)
                     labels.push(ele.ItemName);
             })
 
@@ -97,33 +97,35 @@ const ConsumableReport = () => {
     };
 
     const handleSearch = (val) => {
-        if(val === undefined || val === ''){
+        if (val === undefined || val === '') {
             setnewTableData(tableData)
-        }else{
-            setnewTableData(val) 
+        } else {
+            setnewTableData(val)
         }
-      }
-    
+    }
+
 
     return (
         <ConsumeContainer>
-            <PageHeader
-                pageTitle='Consumption Report'
-                csvLinkTitle='Export csv'
-                csvData={newTableData}
-                csvDataName='consumptionReport.csv'
-            />
-            <Filter
-                dateRange
-                dateRet={dataRet}
-                toCompareData={tableData}
-                onSearch
-                serchButton
-                dataReturn={handleSearch}
-                forConsumptionReport
-            />
+            <div className="maiTopContainer">
+                <PageHeader
+                    pageTitle='Consumption Report'
+                    csvLinkTitle='Export csv'
+                    csvData={newTableData}
+                    csvDataName='consumptionReport.csv'
+                />
+                <Filter
+                    dateRange
+                    dateRet={dataRet}
+                    toCompareData={tableData}
+                    onSearch
+                    serchButton
+                    dataReturn={handleSearch}
+                    forConsumptionReport
+                />
+            </div>
             <div className="tableisRes">
-                <Table
+                <Table className='tableWidth'
                     columns={tableHead}
                     dataSource={newTableData}
                 />
@@ -147,12 +149,5 @@ const ConsumableReport = () => {
 export default ConsumableReport
 
 const ConsumeContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
+ 
   `

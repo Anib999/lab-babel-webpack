@@ -14,7 +14,7 @@ const Index = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [goodsList, setgoodsList] = useState([])
-  const [newGoodsList, setnewGoodsList ] = useState([]);
+  const [newGoodsList, setnewGoodsList] = useState([]);
 
   const columns = [
     {
@@ -73,11 +73,11 @@ const Index = () => {
     getLabData(data)
   }
 
-  const handleSearch = (val) => { 
-    if(val === undefined || val === ''){
+  const handleSearch = (val) => {
+    if (val === undefined || val === '') {
       setnewGoodsList(goodsList)
-    }else{
-      setnewGoodsList(val) 
+    } else {
+      setnewGoodsList(val)
     }
   }
 
@@ -85,29 +85,32 @@ const Index = () => {
 
   return (
     <GoodsInContainer>
-      <PageHeader
-        buttonTitle='Add Goods'
-        pageTitle='Goods In'
-        buttonOnClick={() => history.push('./goodsin/add')}
-      ></PageHeader>
-      <Filter
-        dataReturn={handleSearch}
-        dateRange
-        dateRet={dataRet}
-        toCompareData={goodsList}
-        serchButton
-        onSearch
-        forGoodsIn
-        columns={columns}
-      ></Filter>
+      <div className="maiTopContainer">
+        <PageHeader
+          buttonTitle='Add Goods'
+          pageTitle='Goods In'
+          buttonOnClick={() => history.push('./goodsin/add')}
+        ></PageHeader>
+        <Filter
+          dataReturn={handleSearch}
+          dateRange
+          dateRet={dataRet}
+          toCompareData={goodsList}
+          serchButton
+          onSearch
+          forGoodsIn
+          columns={columns}
+        ></Filter>
+      </div>
+
       <div className="tableisRes">
         <Table className='tableWidth'
           columns={columns}
           dataSource={newGoodsList}
         />
-        
+
       </div>
-      
+
     </GoodsInContainer>
   )
 }
@@ -115,16 +118,5 @@ const Index = () => {
 export default Index
 
 const GoodsInContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
 
-  .tableWidth{
-    width: auto;
-  }
 `

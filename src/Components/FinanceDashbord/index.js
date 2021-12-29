@@ -116,7 +116,7 @@ const Index = () => {
 
   return (
     <FinenceDashbordContainer>
-      <div className="headingContainer">
+      <div className="maiTopContainer">
         <PageHeader
           pageTitle='Finance Dashbord'
         ></PageHeader>
@@ -125,24 +125,25 @@ const Index = () => {
           serchButton
         />
       </div>
+      {/* lg={15} md ={15} sm {24} */}
 
       <div className="mainContainer">
         <Row justify='space-between'>
-          <Col span={15}  className='financeCards'> 
+          <Col lg={15} md={12} sm={24} xs={24}  className='financeCards'> 
             <h3>Paymet Report</h3>
             <Bar options={options} data={dataBar} />
           </Col>
-          <Col span={8} className='financeCards'>
+          <Col lg={8} md ={11} sm={24} xs={24} className='financeCards'>
             <h3>Paymet Report</h3>
             <Pie options={options} data={dataPie} />
           </Col>
         </Row>
         <Row justify='space-between'>
-          <Col span={11} className='financeCards'>
+          <Col lg={11} md={12} sm={24} xs={24} className='financeCards'>
             <h3>Refer Report</h3>
             <Doughnut options={options} data={dataDo}/>
           </Col>
-          <Col span={12} className='financeCards'>
+          <Col lg={12} md={11} sm={24} xs={24} className='financeCards'>
             <h3>Requestor Report</h3>
             <Doughnut options={options} data={dataDo}/>
           </Col>
@@ -160,22 +161,12 @@ const Index = () => {
 export default Index;
 
 const FinenceDashbordContainer = styledComponents.div`
-  .headingContainer{
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    overflow: hidden;
-    margin-bottom: 30px;
-  }
   .financeCards{
     background: rgba( 255, 255, 255, 1 );
     box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
-    border-radius: 10px;
+    border-radius: 7px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     margin-bottom: 30px;
     padding: 5px 8px;

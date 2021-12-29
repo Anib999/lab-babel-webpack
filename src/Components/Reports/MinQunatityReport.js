@@ -20,7 +20,7 @@ const MinQunatityReport = () => {
   }, [])
 
   useEffect(() => {
-    
+
     CreateTable();
   }, [tableData])
 
@@ -41,15 +41,17 @@ const MinQunatityReport = () => {
 
   return (
     <MinQunatityReportContainer>
-      <PageHeader
-        pageTitle='Minimum Quantity Report'
-        csvLinkTitle='Export csv'
-        csvData={tableData}
-        csvDataName='minQtyRepot.csv'
-      >
-      </PageHeader>
+      <div className="maiTopContainer">
+        <PageHeader
+          pageTitle='Minimum Quantity Report'
+          csvLinkTitle='Export csv'
+          csvData={tableData}
+          csvDataName='minQtyRepot.csv'
+        >
+        </PageHeader>
+      </div>
       <div className="tableisRes">
-      <Table columns={tableHead} dataSource={tableData}></Table>
+        <Table columns={tableHead} dataSource={tableData}></Table>
       </div>
     </MinQunatityReportContainer>
   )

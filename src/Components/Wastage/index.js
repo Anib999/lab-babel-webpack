@@ -18,14 +18,15 @@ const Index = () => {
   const history = useHistory();
   const [tableData, setTableData] = useState([]);
   const [newTableData, setnewTableData] = useState([]);
-  const [label,  setLabel]  = useState([]);
+  const [label, setLabel] = useState([]);
   const [wastage, setWastage] = useState([]);
 
   const columns = [
     {
       title: 'Id',
       dataIndex: 'WId',
-      key: 'wastageId'
+      key: 'wastageId',
+      // fixed: 'left',
     },
     {
       title: 'Item Name',
@@ -66,7 +67,7 @@ const Index = () => {
       key: 'action',
       render: (text, record) => (
         <Space size="middle">
-          <Cancle onClick={()=> history.push(`./wastage/edit/${record.WId}/${record.CreatedDate}`)}>Cancel</Cancle>
+          <Cancle onClick={() => history.push(`./wastage/edit/${record.WId}/${record.CreatedDate}`)}>Cancel</Cancle>
         </Space>
       )
     }
@@ -77,7 +78,7 @@ const Index = () => {
       setTableData(val)
       setnewTableData(val)
       let pushedArr = []
-      let pushedWastage =[]
+      let pushedWastage = []
       val.forEach(ele => {
         pushedArr.push(ele?.ItemName)
         pushedWastage.push(ele?.WastageAmount)
@@ -100,13 +101,13 @@ const Index = () => {
     labels,
     datasets: [
       {
-        
+
         label: 'Wastage',
         backgroundColor: ChartColor,
         data: wastage,
         borderColor: [
           'rgba(255, 255, 132, 1)',
-          
+
         ],
         borderWidth: 1,
       },
@@ -126,10 +127,10 @@ const Index = () => {
   };
   const handleSearch = (val) => {
     console.log(val);
-    if(val === undefined || val === ''){
+    if (val === undefined || val === '') {
       setnewTableData(setTableData)
-    }else{
-      setnewTableData(val) 
+    } else {
+      setnewTableData(val)
     }
   }
 
@@ -137,22 +138,26 @@ const Index = () => {
 
   return (
     <ItemContainer>
-      <PageHeader pageTitle="Wastage" buttonTitle='Add Wastage' buttonOnClick={() => history.push('./wastage/add')}></PageHeader>
-      <Filter 
-        dateRange 
-        dateRet={dateRet}
-        dataReturn={handleSearch}
-        toCompareData={tableData}
-        serchButton
-        onSearch
-        forGoodsIn
-        >  
-      </Filter>
-      <div className="tableisRes">
-        <Table columns={columns} dataSource={newTableData}></Table>
+      <div className="maiTopContainer">
+        <PageHeader pageTitle="Wastage" buttonTitle='Add Wastage' buttonOnClick={() => history.push('./wastage/add')}></PageHeader>
+        <Filter
+          dateRange
+          dateRet={dateRet}
+          dataReturn={handleSearch}
+          toCompareData={tableData}
+          serchButton
+          onSearch
+          forGoodsIn
+        >
+        </Filter>
       </div>
-      {label.length !== 0 ? <ReportChart dataDo={dataDo} dataBar={dataBar}></ReportChart>: ''}
-      
+      <div className="tableisRes">
+        <Table className='tableWidth' columns={columns} dataSource={newTableData} 
+        // scroll={{ x: 'calc(700px + 50%)', y: 240 }}
+        ></Table>
+      </div>
+      {label.length !== 0 ? <ReportChart dataDo={dataDo} dataBar={dataBar}></ReportChart> : ''}
+
     </ItemContainer>
   )
 }
@@ -160,12 +165,5 @@ const Index = () => {
 export default Index
 
 const ItemContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
+  
 `

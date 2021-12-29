@@ -100,7 +100,7 @@ const NewGoodsInReport = () => {
         totArr.push(el.GoodsInCount)
 
         repData.push({
-          label: 'Dataset '+counter++,
+          label: 'Dataset ' + counter++,
           data: el.GoodsInCount,
         })
       })
@@ -175,32 +175,34 @@ const NewGoodsInReport = () => {
   };
 
   const handleSearch = (val) => {
-    if(val === undefined || val === ''){
+    if (val === undefined || val === '') {
       setnewGoodsList(goodsList)
-    }else{
-      setnewGoodsList(val) 
+    } else {
+      setnewGoodsList(val)
     }
   }
 
   return (
     <NewGoodsInContainer>
-      <PageHeader
+      <div className="maiTopContainer">
+        <PageHeader
 
-        pageTitle='Goods In Report'
-        csvLinkTitle='Export csv'
-        csvData={newGoodsList}
-        csvDataName='goodsInReport.csv'
-      />
-      <Filter
-        dateRange
-        dateRet={dataRet}
-        itemName
-        onSearch
-        toCompareData={goodsList}
-        forGoodsIn
-        dataReturn={handleSearch}
-        serchButton
-      />
+          pageTitle='Goods In Report'
+          csvLinkTitle='Export csv'
+          csvData={newGoodsList}
+          csvDataName='goodsInReport.csv'
+        />
+        <Filter
+          dateRange
+          dateRet={dataRet}
+          itemName
+          onSearch
+          toCompareData={goodsList}
+          forGoodsIn
+          dataReturn={handleSearch}
+          serchButton
+        />
+      </div>
       <div className="tableisRes">
         <Table className='tableWidth'
           columns={columns}
@@ -220,16 +222,5 @@ const NewGoodsInReport = () => {
 export default NewGoodsInReport
 
 const NewGoodsInContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
-
-  .tableWidth{
-    width: auto;
-  }
+  
 `

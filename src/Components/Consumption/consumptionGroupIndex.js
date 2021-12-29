@@ -9,88 +9,90 @@ import { consumptionGroupApi } from '../../services/consumptionService';
 import Filter from '../Common/Filter';
 
 const ConsumptionGroupIndex = () => {
-    const history = useHistory();
-    const dispatch = useDispatch();
-    const [goodsList, setgoodsList] = useState([])
-    const [newgoodsList, setnewgoodsList] = useState([])
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [goodsList, setgoodsList] = useState([])
+  const [newgoodsList, setnewgoodsList] = useState([])
 
-    const columns = [
-        {
-            title: 'CG Id',
-            dataIndex: 'CGId',
-            key: 'CGId',
-        },
-        {
-            title: 'Consumption Group Name',
-            dataIndex: 'ConsumptionGroupName',
-            key: 'ConsumptionGroupName',
-        },
-        {
-            title: 'Is Active',
-            dataIndex: 'IsActive',
-            key: 'IsActive',
-            render: (text) => {
-                let retText = 'Inactive'
-                let retColor = 'red'
-                if (text === true) {
-                    retText = 'Active'
-                    retColor = 'green'
-                }
-                return <Tag color={retColor}>{retText}</Tag>
-            },
-        },
-        {
-            title: 'Action',
-            key: 'action',
-            render: (text, record) => (
-                <Space size="middle">
-                    <Edit onClick={() => history.push(`/consumption/edit/${record.CGId}`)}>Edit</Edit>
-                </Space>
-            )
+  const columns = [
+    {
+      title: 'CG Id',
+      dataIndex: 'CGId',
+      key: 'CGId',
+    },
+    {
+      title: 'Consumption Group Name',
+      dataIndex: 'ConsumptionGroupName',
+      key: 'ConsumptionGroupName',
+    },
+    {
+      title: 'Is Active',
+      dataIndex: 'IsActive',
+      key: 'IsActive',
+      render: (text) => {
+        let retText = 'Inactive'
+        let retColor = 'red'
+        if (text === true) {
+          retText = 'Active'
+          retColor = 'green'
         }
-    ]
-
-    useEffect(() => {
-        getLabData()
-    }, [])
-
-    const getLabData = () => {
-        dispatch(consumptionGroupApi((val) => {
-            setgoodsList(val)
-            setnewgoodsList(val)
-        }))
+        return <Tag color={retColor}>{retText}</Tag>
+      },
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (text, record) => (
+        <Space size="middle">
+          <Edit onClick={() => history.push(`/consumption/edit/${record.CGId}`)}>Edit</Edit>
+        </Space>
+      )
     }
-    const handleSearch = (val) => {
-        if(val === undefined || val === ''){
-            setnewgoodsList(goodsList)
-        }else{
-            setnewgoodsList(val) 
-        }
-      }
+  ]
 
-    return (
-        <ConsumptionGroupIndexContainer>
-            <PageHeader
-                buttonTitle='Add Group'
-                pageTitle='Consumption Group'
-                buttonOnClick={() => history.push('/consumption/add')}
-            />
-            <Filter
-                onSearch
-                toCompareData={goodsList}
-                // forGoodsIn
-                dataReturn={handleSearch}
-                forConsumption
-            ></Filter>
-            <div className="tableisRes">
-                <Table className='tableWidth'
-                    columns={columns}
-                    dataSource={newgoodsList}
-                />
-            </div>
+  useEffect(() => {
+    getLabData()
+  }, [])
 
-        </ConsumptionGroupIndexContainer>
-    )
+  const getLabData = () => {
+    dispatch(consumptionGroupApi((val) => {
+      setgoodsList(val)
+      setnewgoodsList(val)
+    }))
+  }
+  const handleSearch = (val) => {
+    if (val === undefined || val === '') {
+      setnewgoodsList(goodsList)
+    } else {
+      setnewgoodsList(val)
+    }
+  }
+
+  return (
+    <ConsumptionGroupIndexContainer>
+      <div className="maiTopContainer">
+        <PageHeader
+          buttonTitle='Add Group'
+          pageTitle='Consumption Group'
+          buttonOnClick={() => history.push('/consumption/add')}
+        />
+        <Filter
+          onSearch
+          toCompareData={goodsList}
+          // forGoodsIn
+          dataReturn={handleSearch}
+          forConsumption
+        ></Filter>
+      </div>
+      <div className="tableisRes">
+        <Table className='tableWidth'
+          columns={columns}
+          dataSource={newgoodsList}
+        />
+      </div>
+
+    </ConsumptionGroupIndexContainer>
+  )
 }
 
 export default ConsumptionGroupIndex

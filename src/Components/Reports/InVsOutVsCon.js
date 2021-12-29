@@ -142,12 +142,14 @@ const InVsOutVsCon = () => {
 
   return (
     <InVsOutVsContainer>
-      <PageHeader pageTitle="Goods In Vs Goods Out Vs Consumption" />
-      <Filter dateRange
-        dateRet={dataRet}
-        itemName
-        notAll
-      />
+      <div className="maiTopContainer">
+        <PageHeader pageTitle="Goods In Vs Goods Out Vs Consumption" />
+        <Filter dateRange
+          dateRet={dataRet}
+          itemName
+          notAll
+        />
+      </div>
       <Chart type='bar' data={data} />
     </InVsOutVsContainer>
   )
@@ -156,7 +158,5 @@ const InVsOutVsCon = () => {
 export default InVsOutVsCon;
 
 const InVsOutVsContainer = styled.div`
-  background-color: #fefefe;
-  padding: 20px;
-  border-radius: 10px;
+ 
 `

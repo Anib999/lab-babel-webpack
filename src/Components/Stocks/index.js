@@ -51,7 +51,7 @@ const Index = () => {
   useEffect(() => {
     locateRange();
   }, [])
-  useEffect(()=> {
+  useEffect(() => {
     createTableHead();
   }, [tableData]);
 
@@ -61,9 +61,9 @@ const Index = () => {
       setnewTableData(value);
     }))
   }
-  
+
   const createTableHead = () => {
-    if(tableData.length !== 0){
+    if (tableData.length !== 0) {
       let tableKeys = Object.keys(tableData[0]);
       let data = [];
       tableKeys.forEach(ele => {
@@ -77,27 +77,29 @@ const Index = () => {
     }
   }
   const handleSearch = (val) => {
-    if(val === undefined || val === ''){
+    if (val === undefined || val === '') {
       setnewTableData(tableData)
-    }else{
+    } else {
       setnewTableData(val);
     }
   }
 
   return (
     <StocksContainer>
-      <PageHeader 
-        pageTitle="Stocks"
-        csvLinkTitle='Export csv'
-        csvData={newTableData}
-        csvDataName='stocks.csv'
-      ></PageHeader>
-      <Filter
-        onSearch
-        toCompareData={tableData}
-        forGoodsIn
-        dataReturn={handleSearch}
-      ></Filter>
+      <div className="maiTopContainer">
+        <PageHeader
+          pageTitle="Stocks"
+          csvLinkTitle='Export csv'
+          csvData={newTableData}
+          csvDataName='stocks.csv'
+        ></PageHeader>
+        <Filter
+          onSearch
+          toCompareData={tableData}
+          forGoodsIn
+          dataReturn={handleSearch}
+        ></Filter>
+      </div>
       <div className="tableisRes">
         <Table
           columns={tableHead}
@@ -111,12 +113,5 @@ const Index = () => {
 export default Index
 
 const StocksContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
+  
 `

@@ -13,7 +13,7 @@ const Index = () => {
   const history = useHistory();
 
   const [tableData, setTableData] = useState([])
-  const [newTableData, setnewTableData]= useState([])
+  const [newTableData, setnewTableData] = useState([])
 
   useEffect(() => {
     dispatch(getItemCategoryApi((val) => {
@@ -52,36 +52,39 @@ const Index = () => {
       key: 'action',
       render: (text, record) => (
         <Space size="middle">
-          <Edit onClick={()=>history.push(`./category/edit/${record.CId}`)}>Edit</Edit>
+          <Edit onClick={() => history.push(`./category/edit/${record.CId}`)}>Edit</Edit>
         </Space>
       )
     }
   ]
   const handleSearch = (val) => {
-    if(val === undefined || val === ''){
+    if (val === undefined || val === '') {
       setnewTableData(tableData)
-    }else{
-      setnewTableData(val) 
+    } else {
+      setnewTableData(val)
     }
   }
 
   return (
     <ItemContainer>
-      <PageHeader pageTitle="Category" buttonTitle='Add Category' buttonOnClick={() => history.push('./category/add')}></PageHeader>
-      <div className="tableisRes">
-      <Filter
-        onSearch
-        toCompareData={tableData}
-        // forGoodsIn
-        dataReturn={handleSearch}
-        forCategory
-      ></Filter>
-      <Table 
-        columns={columns}
-        dataSource={newTableData}
-      ></Table>
+      <div className="maiTopContainer">
+        <PageHeader pageTitle="Category" buttonTitle='Add Category' buttonOnClick={() => history.push('./category/add')}></PageHeader>
+
+        <Filter
+          onSearch
+          toCompareData={tableData}
+          // forGoodsIn
+          dataReturn={handleSearch}
+          forCategory
+        ></Filter>
       </div>
-      
+      <div className="tableisRes">
+        <Table className='tableWidth'
+          columns={columns}
+          dataSource={newTableData}
+        ></Table>
+      </div>
+
     </ItemContainer>
   )
 }
@@ -89,12 +92,5 @@ const Index = () => {
 export default Index
 
 const ItemContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
+  
 `

@@ -27,11 +27,11 @@ export default AppButton
 
 const AppButtonContainer = styled.div`
   .primary-btn{
-    background-color: #1890ff;
+    background-color: var(--primary);
     color: #fefefe;
-    border-radius: 30px!important;
+    border-radius: 3px!important;
     width: auto;
-    min-height: 36PX;
+    min-height: 30PX;
     display: flex;
     align-items: center;
     font-size: 16px;
@@ -39,29 +39,28 @@ const AppButtonContainer = styled.div`
     letter-spacing: 1px;
     justify-content: center;
     font-weight: 400;
-    border: 2px solid #1890ff;
+    border: 2px solid var(--primary);
     &:hover{
       background-color: transparent;
-      color: #1890ff;
-      border: 2px solid #1890ff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
     }
   }
   .primary-btn-outline{
     background-color: transparent;
-    color: #e95b29;
-    border-radius: 30px!important;
-    widtautoh
-    min-height: 36PX;
+    color:  var(--secondary);
+    border-radius: 3px!important;
+    min-height: 30PX;
     display: flex;
     align-items: center;
     font-size: 16px;
     letter-spacing: 1px;
     font-weight: 400;
-    border: 2px solid #e95b29;
+    border: 2px solid  var(--secondary);
     &:hover{
-      background-color:  #e95b29;
+      background-color:   var(--secondary);
       color: #fefefe;
-      border: 2px solid#e95b29;
+      border: 2px solid var(--secondary);
     }
   }
 `

@@ -46,6 +46,7 @@ const MainAppContentComponentContainer = styled.div`
     min-height: 100vh;
   }
   .costomeContent1{
+    
     padding: 20px 20px 20px 220px;
     @media(max-width: 576px){
       padding: 20px;
@@ -81,19 +82,20 @@ const MainAppContentComponentContainer = styled.div`
 
   .btnPrimary{
   margin-top: 25px;
-  background-color: #e95b29;
+  background-color: var(--secondary);
   color: #fefefe;
   border-radius: 30px!important;
-  padding:  23px 40px;
+  min-height: 30px;
   display: flex;
   align-items: center;
   font-size: 18px;
   letter-spacing: 1.1px;
   font-weight: 400;
+  border: 2px solid var(--secondary);
   &:hover{
-    background-color: #fefefe;
-    border: 1px solid #e95b29;
-    color: #e95b29;
+    background-color: transparent;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
   }
 }
   @media(max-width: 576px){

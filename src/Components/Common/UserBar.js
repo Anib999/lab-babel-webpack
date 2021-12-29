@@ -58,7 +58,7 @@ const UserBarContainer = styled.div`
   border: 1px solid #fefefe;
   padding: 4px 20px;
   border-radius: 20px;
-  background-color: #e95b29;
+  background-color: var(--primary);
   color: #fefefe;
   gap: 15px;
   .userIcon{

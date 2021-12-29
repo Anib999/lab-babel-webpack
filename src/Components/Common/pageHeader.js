@@ -138,7 +138,7 @@ export default PageHeader
 
 const PageHeaderContainer = styled.div`
   background-color: #fefefe;
-  padding: 20px 10px;
+  padding: 10px 10px;
   width: 100%;
   align-items: center;
 `
