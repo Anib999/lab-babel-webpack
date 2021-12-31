@@ -1,33 +1,16 @@
 import { Col, Row, Table } from 'antd';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import Filter from '../Common/Filter';
 import PageHeader from '../Common/pageHeader';
-import { ChartColor } from '../Common/ChartColor'
-import {
-  Chart as ChartJS,
-  LinearScale,
-  CategoryScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Legend,
-  Tooltip,
-  ArcElement,
-  Title
-} from 'chart.js';
-import { Pie, Doughnut, Bar } from 'react-chartjs-2';
-ChartJS.register(
-  LinearScale,
-  CategoryScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  ArcElement,
-  Legend,
-  Tooltip,
-  Title
-);
+import { getDataMetricReportByReportTypeAndDateRange } from '../../services/datametricService'
+
+import { useDispatch } from 'react-redux';
+import PieChart from './PieChart';
+import BarChart from './BarChart';
+import DoughnutChart from './DoughnutChart';
+import DataIsLoading from '../Common/IsLoading';
+
 export const options = {
   responsive: true,
   plugins: {
@@ -39,18 +22,23 @@ export const options = {
 
 const columns = [
   {
-    title: 'Day',
+    title: 'Date',
     dataIndex: 'Day',
     key: 'Day'
   },
   {
+    title: 'Nepali Date',
+    dataIndex: 'NepaliDay',
+    key: 'NepaliDay'
+  },
+  {
     title: 'Total Patiet',
-    dataIndex: 'TotlaPatiet',
+    dataIndex: 'Total Patient',
     key: 'TotlaPatiet'
   },
   {
     title: 'Total Amount',
-    dataIndex: 'TotalAmount',
+    dataIndex: 'Total Amount',
     key: 'TotalAmount'
   },
   {
@@ -74,68 +62,86 @@ const Index = () => {
   //  for referer =Table2
   // for requestor = Table3
   // for over all table = Table4
+  const dispatch = useDispatch();
+  const [PayPie, setPayPie] = useState([]);
+  const [PayBar1, setPayBar1] = useState([]);
+  const [PayBar2, setPayBar2] = useState([]);
+  const [PayRef, setPayRef] = useState([]);
+  const [PayReq, setPayReq] = useState([]);
+  const [PayTable, setPayTable] = useState([]);
 
-  const [PayPie, setPayPie ] = useState([]);
-  const [PayBar, setPayBar ] = useState([]);
-  const [PayRef, setPayRef ] = useState([]);
-  const [PayReq, setPayReq ] = useState([]);
-  const [PayTable, setPayTable ] = useState([]);
+  const [PayPieLabel, setPayPieLabel] = useState([]);
+  const [PayBarLabel, setPayBarLabel] = useState([]);
+  const [PayRefLabel, setPayRefLabel] = useState([]);
+  const [PayReqLabel, setPayReqLabel] = useState([]);
+
+  const [IsLoading, setIsLoading] = useState(false);
+
+  const getDataForReport = (data) => {
+    setIsLoading(true);
+    dispatch(getDataMetricReportByReportTypeAndDateRange(data, (val) => {
+      setPayTable(val?.Table4)
+      //for pie
+      let pusPayPie = []
+      let pusPayPieLabel = []
+      val.ReportDetails.forEach(ele => {
+        pusPayPie.push(ele?.Total);
+        pusPayPieLabel.push(ele?.BIllPaymentType)
+      })
+      setPayPie(pusPayPie);
+      setPayPieLabel(pusPayPieLabel);
+      // for bar
+      let pshBar1 = []
+      let pshBar2 = []
+      let pshBarLabel = []
+      val.Table1.forEach(ele => {
+        pshBar1.push(ele?.PAID)
+        pshBar2.push(ele?.UNPAID)
+        pshBarLabel.push(ele?.Date)
+      })
+      setPayBar1(pshBar1)
+      setPayBar2(pshBar2)
+      setPayBarLabel(pshBarLabel)
+
+      // for refer
+      let pshRef = [];
+      let pushReflabel = [];
+      val.Table2.forEach(ele => {
+        pshRef.push(ele?.Total);
+        pushReflabel.push(ele?.Referrer)
+      })
+      setPayRefLabel(pushReflabel);
+      setPayRef(pshRef);
+
+      // for requestor
+      let pshReq = [];
+      let pushReQlabel = [];
+      val.Table3.forEach(ele => {
+        pshReq.push(ele?.Total);
+        pushReQlabel.push(ele?.Requestor)
+      })
+      setPayReqLabel(pushReQlabel);
+      setPayReq(pshReq);
+      setIsLoading(false);
+    }))
+
+  }
+  const dataRet = (val) => {
+    let data = {
+      ...val,
+      fromdate: val[0].format('YYYY-MM-DD'),
+      todate: val[1].format('YYYY-MM-DD'),
+    }
+    getDataForReport(data)
+  }
   
-  const [PayPieLabel, setPayPieLabel ] = useState([]);
-  const [PayBarLabel, setPayBarLabel ] = useState([]);
-  const [PayRefLabel, setPayRefLabel ] = useState([]);
-  const [PayReqLabel, setPayReqLabel ] = useState([]);
-  const [PayTableLabel, setPayTableLabel ] = useState([]);
-
-
-  const labels = ['potato', 'brinjasl', 'coma']
-  const financeData = [44, 22, 11]
-
-
-  const dataDo = {
-    labels,
-    datasets: [
-      {
-
-        label: 'financeData',
-        backgroundColor: ChartColor,
-        data: financeData,
-        borderColor: [
-          'rgba(255, 255, 132, 1)',
-
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
-  const dataPie = {
-    labels,
-    datasets: [
-      {
-        type: 'pie',
-        label: 'financeData',
-        backgroundColor: ChartColor,
-        data: financeData,
-        borderColor: [
-          'rgba(255, 255, 132, 1)',
-
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
-  const dataBar = {
-    labels,
-    datasets: [
-      {
-        type: 'bar',
-        label: 'financeData',
-        backgroundColor: 'rgb(53, 162, 235)',
-        data: financeData,
-        borderWidth: 2
-      },
-    ],
-  };
+  useEffect(() => {
+    const data = {
+      fromdate: '2021-12-31',
+      todate: '2021-12-31'
+    }
+    getDataForReport(data);
+  }, [])
 
   return (
     <FinenceDashbordContainer>
@@ -145,39 +151,45 @@ const Index = () => {
         ></PageHeader>
         <Filter
           dateRange
+          dateRet={dataRet}
           serchButton
         />
       </div>
-      {/* lg={15} md ={15} sm {24} */}
-
+      {/* loading pop up */}
+      {
+        IsLoading ? <DataIsLoading /> :  
+      
       <div className="mainContainer">
-        <Row justify='space-between'>
-          <Col lg={15} md={12} sm={24} xs={24}  className='financeCards'> 
+        <Row>
+          <Col lg={24} md={24} sm={24} xs={24} className='financeCards'>
             <h3>Paymet Report</h3>
-            <Bar options={options} data={dataBar} />
+            <BarChart labels={PayBarLabel} data1={PayBar1} data2={PayBar2} />
           </Col>
-          <Col lg={8} md ={11} sm={24} xs={24} className='financeCards'>
-            <h3>Paymet Report</h3>
-            <Pie options={options} data={dataPie} />
+          </Row>
+          <Row gutter={16}>
+          <Col lg={8} md={8} sm={24} xs={24} >
+            <PieChart labels={PayPieLabel} data={PayPie} />
           </Col>
-        </Row>
-        <Row justify='space-between'>
-          <Col lg={11} md={12} sm={24} xs={24} className='financeCards'>
-            <h3>Refer Report</h3>
-            <Doughnut options={options} data={dataDo}/>
-          </Col>
-          <Col lg={12} md={11} sm={24} xs={24} className='financeCards'>
-            <h3>Requestor Report</h3>
-            <Doughnut options={options} data={dataDo}/>
-          </Col>
-        </Row>
         
+        
+          <Col lg={8} md={8} sm={24} xs={24} >
+            <DoughnutChart title={'Referer Report'} data={PayRef} labels={PayRefLabel} />
+           
+          </Col>
+          <Col lg={8} md={8} sm={24} xs={24} >
+            <DoughnutChart title={'Requestor Report'} data={PayReq} labels={PayReqLabel} />
+          </Col>
+        </Row>
+        <Row style={{marginTop: "20px"}}>
         <div className="tableisRes financeCards">
           <h3>Total Collection</h3>
-          <Table columns={columns} span={24}></Table>
+          <Table className='tableWidth' columns={columns} dataSource={PayTable}
+          ></Table>
         </div>
-        
+        </Row>
       </div>
+      }
+      
     </FinenceDashbordContainer>
   )
 }
@@ -191,8 +203,10 @@ const FinenceDashbordContainer = styled.div`
     -webkit-backdrop-filter: blur( 4px );
     border-radius: 7px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     padding: 5px 8px;
+    width: 100%;
+    height: 100%;
     h3{
       border-bottom: 1px solid #c6c6cb;
     }

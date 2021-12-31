@@ -153,7 +153,6 @@ const Index = () => {
       </div>
       <div className="tableisRes">
         <Table className='tableWidth' columns={columns} dataSource={newTableData} 
-        // scroll={{ x: 'calc(700px + 50%)', y: 240 }}
         ></Table>
       </div>
       {label.length !== 0 ? <ReportChart dataDo={dataDo} dataBar={dataBar}></ReportChart> : ''}

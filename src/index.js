@@ -15,6 +15,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router basename={'/carelabinventory/'}>
+        {/* ReportEntry/linkname */}
         <App />
       </Router>
     </Provider>

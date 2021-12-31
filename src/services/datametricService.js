@@ -168,10 +168,10 @@ export const getListofcompany = (successCallback) => {
 }
 
 // 
-export const getDataMetricReportByReportTypeAndDateRange = (successCallback) => {
+export const getDataMetricReportByReportTypeAndDateRange = (data, successCallback) => {
     return async dispatch => {
         try {
-            const response = await fetch(`${GetDataMetricReportByReportTypeAndDateRange}`);
+            const response = await fetch(`${GetDataMetricReportByReportTypeAndDateRange}?from=${data.fromdate}&to=${data.todate}&reportType=dashboard`);
             if (response?.status === 200) {
                 successCallback(response?.data);
             } else {
