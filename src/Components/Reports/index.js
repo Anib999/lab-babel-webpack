@@ -58,7 +58,7 @@ const Index = () => {
 export default Index
 
 const ReportContainer = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
+  background: var(--secondaryBackground);
   box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );

@@ -12,8 +12,8 @@ const DashBoardContainer = () => {
         {data.map(e => (
           <>
             {e.key !== "dashbord" ? 
-            <NavLink to={e.path}>
-              <div className='cButton'>
+            <NavLink to={e.path} key={e.name}>
+              <div className='cButton' >
                   <span>{e.name}</span>
                   <span><i className={e.icon}></i> </span>
               </div> 
@@ -60,10 +60,10 @@ const DashbordContainer = styled.div`
       font-size: 20px;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      color: #a09999;
+      color: var(--titleTxt);
       i{
         font-size: 25px;
-      
+        color: var(--primary);
       }
     }
     
@@ -75,7 +75,7 @@ const DashbordContainer = styled.div`
       letter-spacing: 1.4px;
       text-transform: uppercase;
       margin-right: 10px;
-      color: #a09999;
+      
       i{
         font-size: 25px;
       

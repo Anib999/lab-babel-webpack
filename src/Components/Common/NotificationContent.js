@@ -10,7 +10,7 @@ const NotificationContent = ({ data }) => {
       {
         
         data.slice(0,5).map(e => (
-          <div className="card" onClick={()=>history.push('/reports/minquantityreport')}>
+          <div key={e.ItemName.toString()} className="card" onClick={()=>history.push('/reports/minquantityreport')}>
             <div className="icon">
               <i className='icon-exclamation-sign'></i>
             </div>

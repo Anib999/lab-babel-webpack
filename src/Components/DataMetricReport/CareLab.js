@@ -49,7 +49,7 @@ const CareLab = () => {
 export default CareLab
 
 const CareLabContain = styled.div`
-  background: rgba( 255, 255, 255, 0.25 );
+  background: var(--secondaryBackground);
   box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );
@@ -59,7 +59,7 @@ const CareLabContain = styled.div`
   margin-bottom: 50px;
   .contents{
     width: 100%;
-    padding: 40px 20px;
+    padding: 2px 20px 40px 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;

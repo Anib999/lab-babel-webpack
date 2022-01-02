@@ -27,6 +27,22 @@
   color: #fefefe;
   border: 1px solid var(--secondary);
 }
+.ant-menu-submenu-arrow::before, .ant-menu-submenu-arrow::after {
+  background-color: var(--primary);
+}
+.ant-menu-item a:hover ,.ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-item {
+  color: var(--primary);
+}
+.ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  color: var(--primary);
+}
+/* .ant-input:focus, .ant-input-focused{
+  border-color: var(--primary);
+  box-shadow:  0 0 0 2px rgba(123, 124, 126, 0.123);
+}
+.ant-input:hover {
+  border-color: var(--primary);
+} */
 .App {
   text-align: center;
 }
@@ -83,6 +99,10 @@ h4 {
   font-size: 30px;
   font-weight: 600;
   letter-spacing: 1.2px;
+  color: var(--titleTxt);
+}
+a{
+  color: var(--primary);
 }
 
 @keyframes beat {

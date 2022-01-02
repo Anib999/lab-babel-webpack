@@ -8,6 +8,7 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
     filename: 'index_bundle.js',
     publicPath: '/'
+    // publicPath: 'http://103.233.58.52:8080/carelabinventory/'
   },
   module: {
     rules: [

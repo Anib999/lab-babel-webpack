@@ -52,7 +52,7 @@ const SettingsContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background: rgba( 255, 255, 255, 0.25 );
+    background: var(--secondaryBackground);
     box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.17 );
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
@@ -62,10 +62,10 @@ const SettingsContainer = styled.div`
       font-size: 20px;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      color: #a09999;
+      color: var(--titleTxt);
       i{
         font-size: 25px;
-      
+        color: var(--primary)
       }
     }
     
@@ -77,7 +77,7 @@ const SettingsContainer = styled.div`
       letter-spacing: 1.4px;
       text-transform: uppercase;
       margin-right: 10px;
-      color: #a09999;
+      
       i{
         font-size: 25px;
       

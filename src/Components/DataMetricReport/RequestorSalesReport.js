@@ -87,7 +87,7 @@ const RequestorSalesReport = () => {
       </div>
       {
         IsLoading ? <DataIsLoading /> :
-        tableHead.length !== 0 ?
+        newTableData.length !== 0 ?
           <div className="tableisRes">
             <Table className='tableWidth'
               columns={tableHead}

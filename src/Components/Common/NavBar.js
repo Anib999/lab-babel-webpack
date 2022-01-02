@@ -13,7 +13,7 @@ const NavBar = (props) => {
       <Row justify="space-between">
         <Col>
           {/* <SerchBar></SerchBar> */}
-          <h2 className={sideGo} style={{ color: '#232324' }}>CareLab Inventory Management System</h2>
+          <h2 className={sideGo} style={{ color: 'var(--primary)' }}>CareLab Inventory Management System</h2>
         </Col>
 
         <Col className='costomeCol'>

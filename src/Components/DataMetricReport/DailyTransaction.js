@@ -4,12 +4,14 @@ import Filter from '../Common/Filter'
 import PageHeader from '../Common/pageHeader'
 import { getDailyTransactionReport } from "../../services/datametricService";
 import { Table, Tag } from "antd";
+import DataIsLoading from "../Common/IsLoading";
 
 const DailyTransaction = () => {
   const dispatch = useDispatch();
   const [tableData, settableData] = useState([]);
   const [newTableData, setNewTableData] = useState([]);
   const [fromToDate, setfromToDate] = useState({});
+  const [IsLoading, setIsLoading] = useState(false);
 
   const tableHead = [
     {
@@ -103,9 +105,11 @@ const DailyTransaction = () => {
   ]
 
   const getDataForReport = (data) => {
+    setIsLoading(true);
     dispatch(getDailyTransactionReport(data, (val) => {
       settableData(val)
       setNewTableData(val)
+      setIsLoading(false);
     }))
   }
 
@@ -151,12 +155,16 @@ const DailyTransaction = () => {
           forDailyTrasection
         />
       </div>
-      <div className="tableisRes">
-        <Table className='tableWidth'
-          columns={tableHead}
-          dataSource={newTableData}
-        />
-      </div>
+      {
+        IsLoading ? <DataIsLoading /> :
+        newTableData.length !== 0 ?
+          <div className="tableisRes">
+            <Table className='tableWidth'
+              columns={tableHead}
+              dataSource={newTableData}
+            />
+          </div> : ''
+      }
     </>
   )
 }

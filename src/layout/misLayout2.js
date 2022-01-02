@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import BottomNav from '../Components/Common/BottomNav';
 import MobileNav from '../Components/Common/MobileNav';
 import { Layout } from 'antd';
+import { Link } from 'react-router-dom';
 
 const { Content, Footer } = Layout;
 const date = new Date();
@@ -20,17 +21,20 @@ const AppLayout = (props) => {
     <MainAppContentComponentContainer>
       <Layout className="mainLayout" id="app-layout">
         <Layout>
-          <SideNav statePass={statePass}></SideNav>
+          {/* <SideNav statePass={statePass}></SideNav> */}
           <Layout className="main-app-layout">
-            <NavBar sideGo={Value === true ? 'customContent2' : 'customContent1'}></NavBar>
-            <MobileNav />
+            {/* <NavBar sideGo={Value === true ? 'customContent2' : 'customContent1'}></NavBar>
+            <MobileNav /> */}
             {props?.secondaryNav && props?.secondaryNavigation}
-            <Content className={Value === true ? 'costomeContent2' : 'costomeContent1'}>
+            <Content 
+            // className={Value === true ? 'costomeContent2' : 'costomeContent1'}
+            >
+              
               {props?.children}
             </Content>
-            <Footer className="footer">
+            {/* <Footer className="footer">
               <h3>All rights reserved &copy; Lunivatech Pvt. Ltd {date.getFullYear()}</h3>
-            </Footer>
+            </Footer> */}
             <BottomNav></BottomNav>
           </Layout>
         </Layout>
@@ -60,8 +64,9 @@ const MainAppContentComponentContainer = styled.div`
   }
 
   .ant-layout-content {
-    margin-top: 75px;
-    margin-bottom: 30px;
+    /* margin-top: 75px; */
+    /* margin-bottom: 30px; */
+    margin: 15px 30px 0px 30px;
     @media(max-width: 576px){
       margin-top: 65px;
     }
@@ -79,16 +84,15 @@ const MainAppContentComponentContainer = styled.div`
       padding: 20px;
     }
   }
-
   .btnPrimary{
   margin-top: 25px;
   background-color: var(--secondary);
   color: var(--secondaryBackground);
   border-radius: 30px!important;
-  min-height: 36px;
+  min-height: 30px;
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 1.1px;
   font-weight: 400;
   border: 1px solid var(--secondary);

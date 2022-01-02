@@ -17,12 +17,14 @@ function App() {
 
 const Potato = createGlobalStyle`
   :root {
-  --primary: #e95b29;
+  /* --primary: #e95b29; */
   /* --primary: #026b9e; */
-  --secondary: #195eb8;
+  --primary: #879e02;
+  --secondary: #679131;
   --primaryBackground: #f0f0f0;
   --secondaryBackground: #fefefe;
   --cardColor: #fefefe;
+  --titleTxt: #232342;
   }
 `
   return (
@@ -39,7 +41,7 @@ const Potato = createGlobalStyle`
       <Switch>
 
         <Route exact path="/">
-          <Redirect to="/dashbord" />
+          <Redirect to="/datametric" />
         </Route>
 
         <PublicRoute

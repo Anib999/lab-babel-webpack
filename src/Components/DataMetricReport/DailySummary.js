@@ -4,12 +4,14 @@ import Filter from '../Common/Filter'
 import PageHeader from '../Common/pageHeader'
 import { getDailySummaryReport } from "../../services/datametricService";
 import { Table, Tag } from "antd";
+import DataIsLoading from "../Common/IsLoading";
 
 const DailySummary = () => {
   const dispatch = useDispatch();
   const [tableData, settableData] = useState([]);
   const [newTableData, setNewTableData] = useState([]);
   const [fromToDate, setfromToDate] = useState({});
+  const [IsLoading, setIsLoading] = useState(false);
 
   const tableHead = [
     {
@@ -54,9 +56,11 @@ const DailySummary = () => {
   ]
 
   const getDataForReport = (data) => {
+    setIsLoading(true);
     dispatch(getDailySummaryReport(data, (val) => {
       settableData(val)
       setNewTableData(val)
+      setIsLoading(false);
     }))
   }
 
@@ -102,12 +106,16 @@ const DailySummary = () => {
           forDailyReport
         />
       </div>
+      {
+        IsLoading ? <DataIsLoading /> :
+        newTableData.length !== 0 ?
       <div className="tableisRes">
         <Table className='tableWidth'
           columns={tableHead}
           dataSource={newTableData}
         />
-      </div>
+      </div>: ''
+      }
     </>
   )
 }

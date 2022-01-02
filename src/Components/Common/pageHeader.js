@@ -6,6 +6,7 @@ import { CSVLink } from 'react-csv';
 import { useDispatch } from "react-redux"
 import { getListofcompany } from '../../services/datametricService';
 import { newTableStyles } from './TableStyles';
+import { Link } from 'react-router-dom';
 
 const PageHeader = ({ pageTitle, buttonTitle, buttonOnClick, csvLinkTitle, csvDataName, csvData, forGroup, forGroupButtonClick, forCon, forConButtonClick, printFileName, reportName, tableHead, fromToDate, removetwo, selctorr }) => {
   const dispatch = useDispatch();
@@ -102,7 +103,14 @@ const PageHeader = ({ pageTitle, buttonTitle, buttonOnClick, csvLinkTitle, csvDa
 
   return (
     <PageHeaderContainer>
+      {/* for msi only */}
+      <Link className='coButton' to='/datametric'>
+        <span>
+          <i className='icon-line2-home'></i> <p>MIS</p></span>
+      </Link>
+      {/* for msi only end */}
       <Row justify='space-between align-center'>
+
         <span className='pageTtitle'>{pageTitle}</span>
         <Row style={{ gap: '10px' }}>
           {forCon && <AppButton buttonTitle={forCon} buttonOnClick={forConButtonClick} primaryBtn ></AppButton>}
@@ -141,4 +149,18 @@ const PageHeaderContainer = styled.div`
   padding: 10px 10px;
   width: 100%;
   align-items: center;
+  .coButton{
+    color: var(--primary);
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    span{
+      display: flex;
+      font-size: 20px;
+      gap: 6px;
+      p{
+        letter-spacing: 1.4px;
+      }
+    }
+  }
 `
