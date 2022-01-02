@@ -134,11 +134,13 @@ const Index = () => {
     }
     getDataForReport(data)
   }
-  
+
   useEffect(() => {
+    const fd = new Date()
+    const date = (`${fd.getFullYear()}-${fd.getMonth() + 1}-${fd.getDate()} `);
     const data = {
-      fromdate: '2021-12-31',
-      todate: '2021-12-31'
+      fromdate: date,
+      todate: date
     }
     getDataForReport(data);
   }, [])
@@ -157,39 +159,39 @@ const Index = () => {
       </div>
       {/* loading pop up */}
       {
-        IsLoading ? <DataIsLoading /> :  
-      
-      <div className="mainContainer">
-        <Row>
-          <Col lg={24} md={24} sm={24} xs={24} className='financeCards'>
-            <h3>Paymet Report</h3>
-            <BarChart labels={PayBarLabel} data1={PayBar1} data2={PayBar2} />
-          </Col>
-          </Row>
-          <Row gutter={16}>
-          <Col lg={8} md={8} sm={24} xs={24} >
-            <PieChart labels={PayPieLabel} data={PayPie} />
-          </Col>
-        
-        
-          <Col lg={8} md={8} sm={24} xs={24} >
-            <DoughnutChart title={'Referer Report'} data={PayRef} labels={PayRefLabel} />
-           
-          </Col>
-          <Col lg={8} md={8} sm={24} xs={24} >
-            <DoughnutChart title={'Requestor Report'} data={PayReq} labels={PayReqLabel} />
-          </Col>
-        </Row>
-        <Row style={{marginTop: "20px"}}>
-        <div className="tableisRes financeCards">
-          <h3>Total Collection</h3>
-          <Table className='tableWidth' columns={columns} dataSource={PayTable}
-          ></Table>
-        </div>
-        </Row>
-      </div>
+        IsLoading ? <DataIsLoading /> :
+
+          <div className="mainContainer">
+            <Row>
+              <Col lg={24} md={24} sm={24} xs={24} className='financeCards'>
+                <h3>Paymet Report</h3>
+                <BarChart labels={PayBarLabel} data1={PayBar1} data2={PayBar2} />
+              </Col>
+            </Row>
+            <Row gutter={16}>
+              <Col lg={8} md={8} sm={24} xs={24} >
+                <PieChart labels={PayPieLabel} data={PayPie} />
+              </Col>
+
+
+              <Col lg={8} md={8} sm={24} xs={24} >
+                <DoughnutChart title={'Referer Report'} data={PayRef} labels={PayRefLabel} />
+
+              </Col>
+              <Col lg={8} md={8} sm={24} xs={24} >
+                <DoughnutChart title={'Requestor Report'} data={PayReq} labels={PayReqLabel} />
+              </Col>
+            </Row>
+            <Row style={{ marginTop: "20px" }}>
+              <div className="tableisRes financeCards">
+                <h3>Total Collection</h3>
+                <Table className='tableWidth' columns={columns} dataSource={PayTable}
+                ></Table>
+              </div>
+            </Row>
+          </div>
       }
-      
+
     </FinenceDashbordContainer>
   )
 }

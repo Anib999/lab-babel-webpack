@@ -5,6 +5,7 @@ import PageHeader from '../Common/pageHeader'
 import { getReferReport } from "../../services/datametricService";
 import { Table } from "antd";
 import { getAllPritDataSucess } from "../../store/slices/printSlice";
+import DataIsLoading from '../Common/IsLoading';
 
 const ReferReport = () => {
   const dispatch = useDispatch();
@@ -13,15 +14,17 @@ const ReferReport = () => {
   const [newTableData, setnewTableData] = useState([]);
   const [printData, setprintData] = useState([])
   const [fromToDate, setfromToDate] = useState({});
+  const [IsLoading, setIsLoading] = useState(false);
 
   const getDataForReport = (data) => {
+    setIsLoading(true);
     setprintData(data)
     dispatch(getReferReport(data, (val) => {
       settableData(val)
       setnewTableData(val)
       let obj = { data, val }
       dispatch(getAllPritDataSucess(obj))
-
+      setIsLoading(false);
     }))
   }
 
@@ -95,12 +98,17 @@ const ReferReport = () => {
           forRefererReport
         />
       </div>
-      <div className="tableisRes">
-        <Table className='tableWidth'
-          columns={tableHead}
-          dataSource={newTableData}
-        />
-      </div>
+      {
+        IsLoading ? <DataIsLoading /> :
+        tableHead.length !== 0 ?
+          <div className="tableisRes">
+            <Table className='tableWidth'
+              columns={tableHead}
+              dataSource={newTableData}
+            />
+
+          </div> : ''
+      }
     </>
   )
 }

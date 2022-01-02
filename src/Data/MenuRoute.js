@@ -98,7 +98,7 @@ export const settingsMenu = [
     isactive: MenuSettings.rack,
   },
   {
-    icon: 'icon-bar-chart',
+    icon: 'icon-line-content-right',
     key: 'unit',
     name: 'unit',
     path: '/units',

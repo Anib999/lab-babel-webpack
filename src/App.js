@@ -18,6 +18,7 @@ function App() {
 const Potato = createGlobalStyle`
   :root {
   --primary: #e95b29;
+  /* --primary: #026b9e; */
   --secondary: #195eb8;
   --primaryBackground: #f0f0f0;
   --secondaryBackground: #fefefe;

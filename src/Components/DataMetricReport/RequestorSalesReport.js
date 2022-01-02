@@ -4,12 +4,14 @@ import Filter from '../Common/Filter'
 import PageHeader from '../Common/pageHeader'
 import { getRequestorTotalSalesReport } from "../../services/datametricService";
 import { Table } from "antd";
+import DataIsLoading from "../Common/IsLoading";
 
 const RequestorSalesReport = () => {
   const dispatch = useDispatch();
   const [tableData, settableData] = useState([]);
   const [newTableData, setnewTableData] = useState([]);
   const [fromToDate, setfromToDate] = useState({});
+  const [IsLoading, setIsLoading] = useState(false)
 
   const tableHead = [
     {
@@ -35,9 +37,11 @@ const RequestorSalesReport = () => {
   ]
 
   const getDataForReport = (data) => {
+    setIsLoading(true)
     dispatch(getRequestorTotalSalesReport(data, (val) => {
       settableData(val)
       setnewTableData(val)
+      setIsLoading(false)
     }))
   }
 
@@ -81,12 +85,16 @@ const RequestorSalesReport = () => {
           forReportSalesReport
         />
       </div>
-      <div className="tableisRes">
-        <Table className='tableWidth'
-          columns={tableHead}
-          dataSource={newTableData}
-        />
-      </div>
+      {
+        IsLoading ? <DataIsLoading /> :
+        tableHead.length !== 0 ?
+          <div className="tableisRes">
+            <Table className='tableWidth'
+              columns={tableHead}
+              dataSource={newTableData}
+            />
+          </div> : ''
+      }
     </>
   )
 }
