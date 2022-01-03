@@ -18,4 +18,5 @@ export const MenuSettings = {
     units: true,
     consumption: true,
     consumptionlook: true,
+    theme: true,
 }

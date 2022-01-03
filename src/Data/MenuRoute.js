@@ -118,4 +118,11 @@ export const settingsMenu = [
     path: '/consumptionlook',
     isactive: MenuSettings.consumptionlook,
   },
+  {
+    icon: 'icon-line2-screen-desktop',
+    key: 'theme',
+    name: 'theme',
+    path: '/theme',
+    isactive: MenuSettings.theme,
+  },
 ]

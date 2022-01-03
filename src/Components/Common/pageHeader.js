@@ -104,10 +104,10 @@ const PageHeader = ({ pageTitle, buttonTitle, buttonOnClick, csvLinkTitle, csvDa
   return (
     <PageHeaderContainer>
       {/* for msi only */}
-      <Link className='coButton' to='/datametric'>
+      {/* <Link className='coButton' to='/datametric'>
         <span>
           <i className='icon-line2-home'></i> <p>MIS</p></span>
-      </Link>
+      </Link> */}
       {/* for msi only end */}
       <Row justify='space-between align-center'>
 
