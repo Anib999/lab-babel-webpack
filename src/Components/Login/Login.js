@@ -7,8 +7,8 @@ import { useDispatch } from 'react-redux';
 import { getLoginApi } from '../../services/loginService';
 import { Form, Input, Button } from 'antd';
 import styled from 'styled-components';
-import logo from '../../assets/images/logo.png';
-// import  logo from '../../assets/images/crystalDi.png'
+// import logo from '../../assets/images/logo.png';
+import  logo from '../../assets/images/crystalDi.png'
 import crystslBkg from '../../assets/images/crystal.jpg'
 import { getItemNearApi } from '../../services/itemNewItemService'
 // import { getListofcompany } from '../../services/datametricService';

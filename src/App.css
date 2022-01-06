@@ -107,21 +107,13 @@ a{
 
 @keyframes beat {
   0% {
-    transform: scale(0.7);
-  }
-  25% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.7);
-  }
-
-  75% {
-    transform: scale(1);
+    
+  
+    transform: rotate(360deg);
   }
 
   100% {
-    transform: scale(0.7);
+    transform: rotate(0deg);
   }
 }
 .fallback-container {
@@ -132,7 +124,8 @@ a{
   align-items: center;
 }
 .fallback-container img {
-  animation: beat 2s infinite;
+  width: 80px;
+  animation: beat 800ms infinite;
 }
 
 .tableisRes {

@@ -68,7 +68,7 @@ const BottomNavContainer = styled.div`
   
   justify-content: space-between;
   align-items: center;
-  background-color:#e95c29e1;
+  background-color:var(--primary);
   padding: 15px 40px;
   }
 `

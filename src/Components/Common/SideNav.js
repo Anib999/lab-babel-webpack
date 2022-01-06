@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { MenuRoute, settingsMenu, dataMetricCon } from '../../Data/MenuRoute'
 import { NavLink } from 'react-router-dom'
-import comlogo from '../../assets/images/logo.png';
-import comlogo1 from '../../assets/images/logo1.png';
+import comlogo from '../../assets/images/crystalDi.png';
+import comlogo1 from '../../assets/images/crystalDiSmall.png';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Layout, Menu } from 'antd';
 
@@ -34,7 +34,7 @@ const SideNav = (props) => {
     setdataMetric(!dataMetricdata.every(vendor => vendor['isactive'] === false));
   }, [])
 
-  console.log(dataMetric);
+  // console.log(dataMetric);
   return (
     <SideNavContainer>
       <Scrollbars
@@ -135,7 +135,7 @@ const SideNavContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 40px;
+    height: 55px;
     padding-bottom: 10px;
  
     img{

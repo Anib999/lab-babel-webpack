@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
-import loadlogo from './assets/images/logo1.png';
+import loadlogo from './assets/images/crystalDiSmall.png';
 import { AsyncAddCategory, AsyncAddConsumptionGroup, AsyncAddConsumptionLookGroup, AsyncAddItems, AsyncAddItemVsRatio, AsyncAddLocation, AsyncAddRack, AsyncAddType, AsyncAddUnits, AsyncAddWastage, AsyncAppLayout, AsyncCategory, AsyncConsumableReports, AsyncConsumptionIndex, AsyncConsumptionLookIndex, AsyncDashbord, AsyncGoodOut, AsyncGoodsIn, AsyncGoodsInAdd, AsyncGoodsInReports, AsyncGoodsOutAdd, AsyncGoodsOutReports, AsyncInOutConReports, AsyncinvsReports, AsyncItems, AsyncItemVsRatio, AsyncLocation, AsyncLocationStockReport, AsyncMinQuantityReport, AsyncRack, AsyncReports, AsyncSettings, AsyncStocks, AsyncType, AsyncUnits, AsyncWastage, AsyncAddGroupItemVsRatioVsConsumption, AsyncRequestorReport, AsyncTestTypeReport, AsyncReferReport, AsyncCareLab, AsyncRequestorSalesReport, AsyncDailySummary, AsyncDailyTransaction, AsyncLogin, AsyncPublicLayout, AsyncNotFound, AsyncFinance, AsyncTheme, AsyncOutSourcing, AsyncEditBill } from './App/asyncComponent';
 import PublicRoute from './Routes/PublicRoute';
 import { MenuSettings } from './Data/MenuSettings';
@@ -15,8 +15,8 @@ function App() {
   const Potato = createGlobalStyle`
   :root {
   --primary: ${theme?.primary ? theme?.primary: '#e95b29'};
-  --secondary: #195eb8; 
-  --primaryBackground: #f0f0f0;
+  --secondary: ${theme?.secondary ? theme?.secondary: '#195eb8'}; 
+  --primaryBackground:${theme?.primaryBackground ? theme?.primaryBackground:'#f0f0f0'};
   --secondaryBackground: #fefefe;
   --cardColor: #fefefe;
   --titleTxt: #232342;
@@ -520,6 +520,13 @@ function App() {
                 layout={AsyncAppLayout}
                 forEdit
               />,
+              <PrivateRouter
+                exact
+                key='theme'
+                path='/theme'
+                component={AsyncTheme}
+                layout={AsyncAppLayout}
+              />,
             ] : ''
           }
           {
@@ -590,13 +597,7 @@ function App() {
                 component={AsyncDailyTransaction}
                 layout={AsyncAppLayout}
               />,
-              <PrivateRouter
-                exact
-                key='theme'
-                path='/theme'
-                component={AsyncTheme}
-                layout={AsyncAppLayout}
-              />,
+              
             ] : ''
           }
           {

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import loadlogo from '../../assets/images/logo1.png';
+import loadlogo from '../../assets/images/crystalDiSmall.png';
 
 const MobileNav = () => {
   return (

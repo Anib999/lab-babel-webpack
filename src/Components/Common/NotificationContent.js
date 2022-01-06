@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 const NotificationContent = ({ data }) => {
  
+  console.log('this is data', data)
   const history = useHistory();
   return (
     <NotificationContentContainer>

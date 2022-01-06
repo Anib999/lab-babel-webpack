@@ -23,13 +23,11 @@ const Notification = () => {
     getData();
   }, [])
 
-
-
   return (
     <NotificationContainer>
       <Popover
         placement="bottom"
-        content={tableData > 0?
+        content={tableData.length > 0?
           <NotificationContent data={tableData} /> : 'no new notification'
         }
         trigger="click">
@@ -61,9 +59,9 @@ const NotificationContainer = styled.div`
     text-align: center;
     line-height: 1rem;
     border-radius: 50%;
-    top: 0%;
+    top: 2%;
     height: 1rem;
-    left: 15%;
+    left: 12%;
     font-size: 12px;
   }
 `

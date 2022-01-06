@@ -5,8 +5,8 @@ export const themedata = {
   },
   theme1:
   {
-    "primary": "#879e02",
-    "secondary": "#679131",
+    "primary": "#55b571",
+    "secondary": "#1090be",
 
   },
   theme2:
@@ -19,7 +19,8 @@ export const themedata = {
   theme3:
   {
     "primary": "#026b9e",
-    "secondary": "#3955b1",
+    "secondary": "#3ea9dbf2",
+    "primaryBackground": "#d0edff"
 
   },
   theme4:
