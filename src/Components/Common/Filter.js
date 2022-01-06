@@ -13,7 +13,7 @@ import FilterTable from './FilterTable'
 import { getGetRequestorList, getGetRefererList, getListofUser } from '../../services/datametricService'
 
 const Filter = ({ dataReturn, ...props }) => {
-  const { serchButton, itemType, categroryType, dateRange, dataRet, dateRet, locateRange, itemName, notAll, notAllLocate, toCompareData, forGoodsIn, forGoodsOut, onSearch, forConsumptionReport, forItem, forItemVsRatio, forItemType, forCategory, forLocation, forRack, forUnits, forConsumption, forConsumptionLookUp, getrequestorlist, getrefererlist, getuserslist, forRequestorReport, forRefererReport, forDailyReport, forDailyTrasection, forReportSalesReport } = props
+  const { serchButton, itemType, categroryType, dateRange, dataRet, dateRet, locateRange, itemName, notAll, notAllLocate, toCompareData, forGoodsIn, forGoodsOut, onSearch, forConsumptionReport, forItem, forItemVsRatio, forItemType, forCategory, forLocation, forRack, forUnits, forConsumption, forConsumptionLookUp, getrequestorlist, getrefererlist, getuserslist, forRequestorReport, forRefererReport, forDailyReport, forDailyTrasection, forReportSalesReport, getFiscalYear } = props
   const dispatch = useDispatch();
 
   const { Option } = Select;
@@ -487,6 +487,33 @@ const Filter = ({ dataReturn, ...props }) => {
                     </Option>
                   ))
                   }
+                </Select>
+              </Col>
+            }
+
+            {getFiscalYear &&
+              <Col lg={8} md={10} sm={12} xs={24}>
+                <span className='labelTop'>Fiscal Year</span>
+                <Select
+                  showSearch
+                  optionFilterProp="children"
+                  placeholder="Select User"
+                  filterOption={(input, option) => {
+                    return (
+                      option.key.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
+                      option.title.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                    );
+                  }}
+                  style={{ width: '100%' }}
+                  onChange={(val) => { setuserListId(val) }}
+                  size='default'
+                >
+                  <Option title="All"
+                    key="0" value="0">2021/2022</Option>
+                  <Option title="All"
+                    key="0" value="0">2019/2020</Option>
+                    <Option title="All"
+                    key="0" value="0">2018/2019</Option>
                 </Select>
               </Col>
             }

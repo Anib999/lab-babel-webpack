@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { MenuRoute, settingsMenu } from '../../Data/MenuRoute'
+import { MenuRoute, settingsMenu, dataMetricCon } from '../../Data/MenuRoute'
 import { NavLink } from 'react-router-dom'
 import comlogo from '../../assets/images/logo.png';
 import comlogo1 from '../../assets/images/logo1.png';
@@ -14,8 +14,12 @@ const SideNav = (props) => {
   const { statePass } = props
   const data = MenuRoute;
   const menuData = settingsMenu;
+  const dataMetricdata = dataMetricCon;
   const [collpsed, setcollpsed] = useState(false);
   const [showSettings, setShowSettings] = useState(true);
+  const [dataMetric, setdataMetric] = useState(true);
+
+
 
   function oncollpse() {
     setcollpsed(!collpsed);
@@ -27,15 +31,17 @@ const SideNav = (props) => {
 
   useEffect(() => {
     setShowSettings(!menuData.every(vendor => vendor['isactive'] === false));
+    setdataMetric(!dataMetricdata.every(vendor => vendor['isactive'] === false));
   }, [])
 
+  console.log(dataMetric);
   return (
     <SideNavContainer>
       <Scrollbars
         autoHide
         autoHeight
         autoHeightMin={'100vh'}
-        
+
       >
         <Sider collapsible collapsed={collpsed} onCollapse={oncollpse} className='sideNav'>
           <div className="logo">
@@ -84,6 +90,28 @@ const SideNav = (props) => {
                 </SubMenu>
               ) : ''
             }
+
+            {
+              dataMetric ? (
+                <SubMenu key="set2" title='datametric' icon={<i className='icon-line2-settings'></i>}>
+                  {
+                    dataMetricdata.map(e => {
+                      if (e.isactive) {
+                        return (
+                          <Menu.Item key={e.key} icon={<i className={e.icon}></i>}>
+                            <NavLink to={e?.path} className='navLInk' >
+                              {e.name}
+                            </NavLink>
+                          </Menu.Item>
+                        )
+                      }
+                    }
+                    )
+                  }
+                </SubMenu>
+              ) : ''
+            }
+
           </Menu>
         </Sider>
       </Scrollbars>

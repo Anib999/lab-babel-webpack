@@ -78,5 +78,9 @@ export const AsyncDailyTransaction = lazy(() => pMinDelay(import('../Components/
 export const AsyncFinance = lazy(() => pMinDelay(import('../Components/FinanceDashbord/index'), 300));
 export const AsyncTheme = lazy(() => pMinDelay(import('../Components/theme/index'), 300));
 
+// datametric
+export const AsyncOutSourcing = lazy(() => pMinDelay(import('../Components/dataMetricComponent/OutSourcing/index'), 300));
+export const AsyncEditBill = lazy(() => pMinDelay(import('../Components/dataMetricComponent/EditBill/index'), 300));
+
 
 export const AsyncNotFound = lazy(() => pMinDelay(import('../Components/Common/ErrorPage'), 300));
