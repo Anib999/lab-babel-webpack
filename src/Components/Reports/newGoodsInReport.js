@@ -203,17 +203,19 @@ const NewGoodsInReport = () => {
           serchButton
         />
       </div>
-      <div className="tableisRes">
+      <div className="tableisRes financeCards">
         <Table className='tableWidth'
           columns={columns}
           dataSource={newGoodsList}
         />
       </div>
       {goodsInName.length !== 0 ?
-        <ReportChart
-          dataBar={dataBar}
-          dataDo={dataDo}
-        ></ReportChart>
+        <div className="financeCards">
+          <ReportChart
+            dataBar={dataBar}
+            dataDo={dataDo}
+          ></ReportChart>
+        </div>
         : ''}
     </NewGoodsInContainer>
   )

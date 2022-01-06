@@ -194,18 +194,20 @@ const NewGoodsOutReport = () => {
           serchButton
         />
       </div>
-      <div className="tableisRes">
+      <div className="tableisRes financeCards">
         <Table className='tableWidth'
           columns={columns}
           dataSource={newGoodsList}
         />
       </div>
       {goodsOutName.length !== 0 ?
-        <ReportChart
-          options={options}
-          dataBar={dataBar}
-          dataDo={dataDo}
-        ></ReportChart>
+        <div className="financeCards">
+          <ReportChart
+            options={options}
+            dataBar={dataBar}
+            dataDo={dataDo}
+          ></ReportChart>
+        </div>
         : ''}
     </NewGoodsOutContainer>
   )

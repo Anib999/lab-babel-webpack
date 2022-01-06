@@ -151,11 +151,11 @@ const Index = () => {
         >
         </Filter>
       </div>
-      <div className="tableisRes">
-        <Table className='tableWidth' columns={columns} dataSource={newTableData} 
+      <div className="tableisRes financeCards">
+        <Table className='tableWidth' columns={columns} dataSource={newTableData}
         ></Table>
       </div>
-      {label.length !== 0 ? <ReportChart dataDo={dataDo} dataBar={dataBar}></ReportChart> : ''}
+      {label.length !== 0 ? <div className='financeCards'> <ReportChart dataDo={dataDo} dataBar={dataBar}></ReportChart></div> : ''}
 
     </ItemContainer>
   )

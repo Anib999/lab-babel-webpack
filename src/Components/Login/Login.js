@@ -136,6 +136,10 @@ export default function Login() {
 
           </Form.Item>
         </Form>
+
+      <div className="powerd">
+        <p>Powered by &copy; <span style={{color: "#e95b29"}}> LunivaTech Pvt.Ltd.</span></p>
+      </div>
       </div>
 
     </LoginFormContainer>
@@ -188,6 +192,17 @@ const LoginFormContainer = styled.div`
       height: 100vh;
       justify-content: center;
       align-items: center;
+    }
+  }
+
+  .powerd{
+    margin-top: 70px;
+    p{
+      letter-spacing: 1.2px;
+    }
+    span{
+      font-size: 20px;
+      letter-spacing: 1.2px;
     }
   }
 `
