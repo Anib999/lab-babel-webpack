@@ -4,13 +4,12 @@ import { NavLink } from 'react-router-dom'
 import { MenuRoute } from '../Data/MenuRoute'
 import imgOne from '../assets/images/crystalDi.png'
 import { Col, Row } from 'antd'
-import { tokenString } from '../Components/Common/HandleUser'
 import { quotes } from '../Data/quotesData'
 
 
 const DashBoardContainer = () => {
   const data = MenuRoute;
-  const token = tokenString;
+  const token = JSON.parse(sessionStorage.getItem('token'));
   const randomElement = quotes[Math.floor(Math.random() * quotes.length)];
 
   return (

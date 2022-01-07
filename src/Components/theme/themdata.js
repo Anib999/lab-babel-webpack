@@ -7,12 +7,14 @@ export const themedata = {
   {
     "primary": "#55b571",
     "secondary": "#1090be",
+    "primaryBackground": "#e2f5dfb3",
 
   },
   theme2:
   {
     "primary": "#3a3e4e",
     "secondary": "#319191",
+    "primaryBackground":"#9e9fa7",
 
   }
   ,
@@ -26,7 +28,7 @@ export const themedata = {
   theme4:
   {
     "primary": "#ad7934",
-    "secondary": "#3955b1",
-
+    "secondary": "#8db139",
+    "primaryBackground": "#fffeef"
   }
 }

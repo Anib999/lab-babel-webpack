@@ -183,3 +183,9 @@ a{
 .financeCards h3{
   border-bottom: 1px solid #c6c6cb;
 }
+
+@media(max-width: 576px) { 
+  .ant-picker-panels { 
+    flex-direction: column;
+  } 
+}

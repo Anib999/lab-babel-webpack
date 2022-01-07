@@ -24,7 +24,7 @@ const Index = () => {
             >Default</Radio.Button>
             <Radio.Button value={JSON.stringify(themedata.theme1)}>Green</Radio.Button>
             <Radio.Button value={JSON.stringify(themedata.theme2)}>Dark</Radio.Button>
-            <Radio.Button value={JSON.stringify(themedata.theme3)}>Light</Radio.Button>
+            <Radio.Button value={JSON.stringify(themedata.theme3)}>Blue</Radio.Button>
             <Radio.Button value={JSON.stringify(themedata.theme4)}>costome</Radio.Button>
           </Space>
         </Radio.Group>

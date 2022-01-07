@@ -370,6 +370,7 @@ const Filter = ({ dataReturn, ...props }) => {
                 <Datepicker
                   defaultValuer={fromDate}
                   onChanger={(value) => { setfromDate(value) }}
+                  
                 />
               </Col>
             }
