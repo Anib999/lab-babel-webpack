@@ -26,15 +26,15 @@ export default function Login() {
       user: values?.username,
       pass: values?.password
     }
-    setToken({
-      token: 'admin',
-      username: 'admin',
-      roleId: 1,
-      UId: 1
-    })
-    history.push({
-      pathname: '/'
-    })
+    // setToken({
+    //   token: 'admin',
+    //   username: 'admin',
+    //   roleId: 1,
+    //   UId: 1
+    // })
+    // history.push({
+    //   pathname: '/'
+    // })
 
     dispatch(getLoginApi(data, (val) => {
       if (val.length !== 0) {

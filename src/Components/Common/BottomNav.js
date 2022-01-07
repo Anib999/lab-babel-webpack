@@ -49,7 +49,8 @@ export default BottomNav
 const BottomNavContainer = styled.div`
   display: none;
   
-  
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   li{
     list-style: none;
     i{

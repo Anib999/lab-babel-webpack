@@ -9,7 +9,7 @@ const MobileNav = () => {
         <img src={loadlogo} alt="" />
       </div>
       <div className="userIcon">
-
+        Crystal lab
       </div>
     </MobileNavContainer>
   )
@@ -28,6 +28,8 @@ const MobileNavContainer = styled.div`
   width: 100%;
   z-index: 99;
   box-shadow: 0 2px 22px 0 rgb(31 38 135 / 17%);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   
   @media(max-width: 500px){
     display: block;

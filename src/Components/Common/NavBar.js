@@ -13,7 +13,9 @@ const NavBar = (props) => {
       <Row justify="space-between">
         <Col>
           {/* <SerchBar></SerchBar> */}
+          <div className="titleHeading">
           <h2 className={sideGo} style={{ color: 'var(--primary)' }}>CareLab Inventory Management System</h2>
+          </div>
         </Col>
 
         <Col className='costomeCol'>
@@ -39,6 +41,12 @@ const NavBarContainer = styled.div`
   width: 100%;
   box-shadow: 0 2px 22px 0 rgb(31 38 135 / 17%);
 
+  .titleHeading{
+    @media(max-width: 800px){
+      display: none;
+    }
+  }
+
   @media(max-width: 500px){
     display: none;
   }
@@ -47,4 +55,5 @@ const NavBarContainer = styled.div`
     gap: 20px;
     align-items: center;
   }
+  
 `

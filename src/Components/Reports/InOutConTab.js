@@ -188,7 +188,9 @@ const InOutConTab = () => {
           serchButton
         />
       </div>
-      <Bar options={options} data={dataBar} />
+      <div className="financeCards">
+        <Bar options={options} data={dataBar} />
+      </div>
       <div className="tableisRes">
         <Table
           columns={columns}

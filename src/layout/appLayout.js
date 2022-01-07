@@ -62,6 +62,9 @@ const MainAppContentComponentContainer = styled.div`
   .ant-layout-content {
     margin-top: 75px;
     margin-bottom: 30px;
+    @media(max-width: 800px){
+      margin-top: 65px;
+    }
     @media(max-width: 576px){
       margin-top: 65px;
     }
@@ -114,7 +117,7 @@ const MainAppContentComponentContainer = styled.div`
     padding: 7px 50px;
 
     h3{
-      color: #a09999;
+      color: #80808b;
     }
     
     @media(max-width: 576px){
