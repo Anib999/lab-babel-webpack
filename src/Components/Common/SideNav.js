@@ -41,9 +41,10 @@ const SideNav = (props) => {
         autoHide
         autoHeight
         autoHeightMin={'100vh'}
+        
 
       >
-        <Sider collapsible collapsed={collpsed} onCollapse={oncollpse} className='sideNav'>
+        <Sider collapsible collapsed={collpsed} onCollapse={oncollpse} className='sideNav' >
           <div className="logo">
             {
               collpsed === true ?
@@ -52,7 +53,7 @@ const SideNav = (props) => {
             }
           </div>
 
-          <Menu mode="inline" defaultSelectedKeys={['1']} style={{ background: 'var(--secondaryBackground)', paddingBottom: '15%' }}>
+          <Menu mode="inline" defaultSelectedKeys={['1']}  style={{ background: 'var(--secondaryBackground)', paddingBottom: '15%' }}>
             {
               data.length !== 0 ?
                 (

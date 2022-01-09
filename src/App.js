@@ -11,12 +11,13 @@ import { createGlobalStyle } from 'styled-components'
 
 
 function App() {
+
   const theme = JSON.parse(localStorage.getItem('theme'));
   const Potato = createGlobalStyle`
   :root {
-  --primary: ${theme?.primary ? theme?.primary: '#e95b29'};
-  --secondary: ${theme?.secondary ? theme?.secondary: '#195eb8'}; 
-  --primaryBackground:${theme?.primaryBackground ? theme?.primaryBackground:'#f0f0f0'};
+  --primary: ${theme?.primary ? theme?.primary : '#e95b29'};
+  --secondary: ${theme?.secondary ? theme?.secondary : '#195eb8'}; 
+  --primaryBackground:${theme?.primaryBackground ? theme?.primaryBackground : '#f0f0f0'};
   --secondaryBackground: #fefefe;
   --cardColor: #fefefe;
   --titleTxt: #232342;
@@ -53,6 +54,8 @@ function App() {
                 path='/dashbord'
                 component={AsyncDashbord}
                 layout={AsyncAppLayout}
+                showSider
+
               />
             ) : ''
           }
@@ -65,6 +68,7 @@ function App() {
                 path='/goodsin'
                 component={AsyncGoodsIn}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -73,6 +77,7 @@ function App() {
                 path='/goodsin/add'
                 component={AsyncGoodsInAdd}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -82,6 +87,7 @@ function App() {
                 component={AsyncGoodsInAdd}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
 
             ] : ''
@@ -95,6 +101,7 @@ function App() {
                 path='/item'
                 component={AsyncItems}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -103,6 +110,8 @@ function App() {
                 path='/item/add'
                 component={AsyncAddItems}
                 layout={AsyncAppLayout}
+                showSider
+
               />,
 
               <PrivateRouter
@@ -112,6 +121,7 @@ function App() {
                 component={AsyncAddItems}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
             ] : ''
           }
@@ -124,6 +134,7 @@ function App() {
                 path='/goodsout'
                 component={AsyncGoodOut}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -132,6 +143,7 @@ function App() {
                 path='/goodsout/add'
                 component={AsyncGoodsOutAdd}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -141,6 +153,7 @@ function App() {
                 component={AsyncGoodsOutAdd}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
             ] : ''
           }
@@ -153,6 +166,7 @@ function App() {
                 path='/type'
                 component={AsyncType}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -161,6 +175,7 @@ function App() {
                 path='/type/add'
                 component={AsyncAddType}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -170,6 +185,7 @@ function App() {
                 component={AsyncAddType}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
 
             ] : ''
@@ -183,6 +199,7 @@ function App() {
                 path='/category'
                 component={AsyncCategory}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -191,6 +208,7 @@ function App() {
                 path='/category/add'
                 component={AsyncAddCategory}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -200,6 +218,7 @@ function App() {
                 component={AsyncAddCategory}
                 forEdit
                 layout={AsyncAppLayout}
+                showSider
               />,
 
             ] : ''
@@ -213,6 +232,7 @@ function App() {
                 path='/location'
                 component={AsyncLocation}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -221,6 +241,7 @@ function App() {
                 path='/location/add'
                 component={AsyncAddLocation}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -230,6 +251,7 @@ function App() {
                 component={AsyncAddLocation}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
             ] : ''
           }
@@ -242,6 +264,7 @@ function App() {
                 path='/rack'
                 component={AsyncRack}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -250,6 +273,7 @@ function App() {
                 path='/rack/add'
                 component={AsyncAddRack}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -259,6 +283,7 @@ function App() {
                 component={AsyncAddRack}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
             ] : ''
           }
@@ -271,6 +296,7 @@ function App() {
                 path='/wastage'
                 component={AsyncWastage}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -279,6 +305,7 @@ function App() {
                 path='/wastage/add'
                 component={AsyncAddWastage}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -288,6 +315,7 @@ function App() {
                 component={AsyncAddWastage}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
             ] : ''
           }
@@ -300,6 +328,7 @@ function App() {
                 path='/itemvsratio'
                 component={AsyncItemVsRatio}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -308,6 +337,7 @@ function App() {
                 path='/itemvsratio/add'
                 component={AsyncAddItemVsRatio}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -317,6 +347,7 @@ function App() {
                 component={AsyncAddItemVsRatio}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
 
               <PrivateRouter
@@ -326,6 +357,7 @@ function App() {
                 component={AsyncAddGroupItemVsRatioVsConsumption}
                 layout={AsyncAppLayout}
                 forGroup
+                showSider
               />,
 
               <PrivateRouter
@@ -336,6 +368,7 @@ function App() {
                 layout={AsyncAppLayout}
                 forEdit
                 forGroup
+                showSider
               />,
 
               <PrivateRouter
@@ -346,6 +379,7 @@ function App() {
                 layout={AsyncAppLayout}
                 forEdit
                 forCon
+                showSider
               />,
 
               <PrivateRouter
@@ -355,6 +389,7 @@ function App() {
                 component={AsyncAddGroupItemVsRatioVsConsumption}
                 layout={AsyncAppLayout}
                 forCon
+                showSider
               />,
             ] : ''
           }
@@ -367,6 +402,7 @@ function App() {
                 path='/units'
                 component={AsyncUnits}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -375,6 +411,7 @@ function App() {
                 path='/units/add'
                 component={AsyncAddUnits}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -384,6 +421,7 @@ function App() {
                 component={AsyncAddUnits}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
             ] : ''
           }
@@ -396,6 +434,7 @@ function App() {
                 path='/reports'
                 component={AsyncReports}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -404,6 +443,7 @@ function App() {
                 path='/reports/goodsin'
                 component={AsyncGoodsInReports}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -412,6 +452,7 @@ function App() {
                 path='/reports/goodsout'
                 component={AsyncGoodsOutReports}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -420,6 +461,7 @@ function App() {
                 path='/reports/consumption'
                 component={AsyncConsumableReports}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -428,6 +470,7 @@ function App() {
                 path='/reports/invs'
                 component={AsyncinvsReports}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -436,6 +479,7 @@ function App() {
                 path='/reports/inoutcon'
                 component={AsyncInOutConReports}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -444,6 +488,7 @@ function App() {
                 path='/reports/stocks'
                 component={AsyncStocks}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -452,6 +497,7 @@ function App() {
                 path='/reports/minquantityreport'
                 component={AsyncMinQuantityReport}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -460,6 +506,7 @@ function App() {
                 path='/reports/locationstockreport'
                 component={AsyncLocationStockReport}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
             ] : ''
@@ -473,6 +520,7 @@ function App() {
                 path='/consumption'
                 component={AsyncConsumptionIndex}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -481,6 +529,7 @@ function App() {
                 path='/consumption/add'
                 component={AsyncAddConsumptionGroup}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -490,6 +539,7 @@ function App() {
                 component={AsyncAddConsumptionGroup}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
             ] : ''
           }
@@ -502,6 +552,7 @@ function App() {
                 path='/consumptionlook'
                 component={AsyncConsumptionLookIndex}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -510,6 +561,7 @@ function App() {
                 path='/consumptionlook/add'
                 component={AsyncAddConsumptionLookGroup}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -519,6 +571,7 @@ function App() {
                 component={AsyncAddConsumptionLookGroup}
                 layout={AsyncAppLayout}
                 forEdit
+                showSider
               />,
               <PrivateRouter
                 exact
@@ -526,6 +579,7 @@ function App() {
                 path='/theme'
                 component={AsyncTheme}
                 layout={AsyncAppLayout}
+                showSider
               />,
             ] : ''
           }
@@ -536,7 +590,9 @@ function App() {
                 path='/finance'
                 component={AsyncFinance}
                 layout={AsyncAppLayout}
+                showSider
               />
+
             ] : ''
           }
 
@@ -548,6 +604,7 @@ function App() {
                 path='/datametric'
                 component={AsyncCareLab}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -556,6 +613,7 @@ function App() {
                 path='/datametric/testtype'
                 component={AsyncTestTypeReport}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -564,6 +622,7 @@ function App() {
                 path='/datametric/requestor'
                 component={AsyncRequestorReport}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -572,6 +631,7 @@ function App() {
                 path='/datametric/referer'
                 component={AsyncReferReport}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -580,6 +640,7 @@ function App() {
                 path='/datametric/requestorsales'
                 component={AsyncRequestorSalesReport}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -588,6 +649,7 @@ function App() {
                 path='/datametric/dailysummary'
                 component={AsyncDailySummary}
                 layout={AsyncAppLayout}
+                showSider
               />,
 
               <PrivateRouter
@@ -596,8 +658,9 @@ function App() {
                 path='/datametric/dailytransaction'
                 component={AsyncDailyTransaction}
                 layout={AsyncAppLayout}
+                showSider
               />,
-              
+
             ] : ''
           }
           {
@@ -607,7 +670,9 @@ function App() {
                 path='/outsourcing'
                 component={AsyncOutSourcing}
                 layout={AsyncAppLayout}
+                showSider
               />
+
             ] : ''
           }
           {
@@ -617,17 +682,21 @@ function App() {
                 path='/editbill'
                 component={AsyncEditBill}
                 layout={AsyncAppLayout}
+                showSider
               />
+
             ] : ''
           }
-          
+
 
           <PrivateRouter
             exact
             path='/settings'
             component={AsyncSettings}
             layout={AsyncAppLayout}
+            showSider
           />
+
           <Route component={AsyncNotFound} />
 
         </Switch>

@@ -11,6 +11,7 @@ const date = new Date();
 
 const AppLayout = (props) => {
   const [Value, setValue] = useState();
+  console.log(props)
 
   const statePass = (val) => {
     setValue(val);
@@ -20,18 +21,28 @@ const AppLayout = (props) => {
     <MainAppContentComponentContainer>
       <Layout className="mainLayout" id="app-layout">
         <Layout>
-          <SideNav statePass={statePass}></SideNav>
+
+          {props.showSider ? <SideNav statePass={statePass}></SideNav> : ''}
+
           <Layout className="main-app-layout">
-            <NavBar sideGo={Value === true ? 'customContent2' : 'customContent1'}></NavBar>
-            <MobileNav />
-            {props?.secondaryNav && props?.secondaryNavigation}
-            <Content className={Value === true ? 'costomeContent2' : 'costomeContent1'}>
-              {props?.children}
-            </Content>
-            <Footer className="footer">
-              <h3>All rights reserved &copy; Lunivatech Pvt. Ltd {date.getFullYear()}</h3>
-            </Footer>
-            <BottomNav></BottomNav>
+            {props.showSider ? <NavBar sideGo={Value === true ? 'customContent2' : 'customContent1'}></NavBar> : ''}
+            {props.showSider ? <MobileNav /> : ''}
+            {props.showSider ?
+              <Content className={Value === true ? 'costomeContent2' : 'costomeContent1'}>
+                {props?.children}
+              </Content> :
+              <Content className={'costomeContent3'}>
+                {props?.children}
+              </Content>
+            }
+            {props.showSider ?
+              <Footer className="footer">
+                <h3>All rights reserved &copy; Lunivatech Pvt. Ltd {date.getFullYear()}</h3>
+              </Footer>
+              : ''
+            }
+            {props.showSider ? <BottomNav/> : ''}
+            
           </Layout>
         </Layout>
       </Layout>
@@ -47,27 +58,30 @@ const MainAppContentComponentContainer = styled.div`
   }
   .costomeContent1{
     
-    padding: 20px 20px 20px 220px;
+    padding: 90px 20px 60px 220px;
     @media(max-width: 576px){
-      padding: 20px;
+      padding: 90px 20px 70px 20px;
     }
   }
   .costomeContent2{
-    padding: 20px 20px 20px 100px;
+    padding: 90px 20px 60px 100px;
     @media(max-width: 576px){
-      padding: 20px;
+      padding: 90px 20px 70px 20px;
     }
+  }
+  .costomeContent3{
+    padding: 10px;
   }
 
   .ant-layout-content {
-    margin-top: 75px;
-    margin-bottom: 30px;
-    @media(max-width: 800px){
+    /* margin-top: 75px; */
+    /* margin-bottom: 30px; */
+    /* @media(max-width: 800px){
       margin-top: 65px;
     }
     @media(max-width: 576px){
       margin-top: 65px;
-    }
+    } */
   }
 
   .customContent1{
@@ -106,16 +120,15 @@ const MainAppContentComponentContainer = styled.div`
       display: none; 
     } 
   }
+  
   .footer{
     display: flex;
     justify-content: center;
-
     position: fixed;
     bottom: 0;
     width: 100%;
     z-index: 99;
     padding: 7px 50px;
-
     h3{
       color: #80808b;
     }
