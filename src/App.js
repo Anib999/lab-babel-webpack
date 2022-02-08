@@ -1,28 +1,70 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
-import loadlogo from './assets/images/crystalDiSmall.png';
+import loadlogo from './assets/images/logo1.png';
 import { AsyncAddCategory, AsyncAddConsumptionGroup, AsyncAddConsumptionLookGroup, AsyncAddItems, AsyncAddItemVsRatio, AsyncAddLocation, AsyncAddRack, AsyncAddType, AsyncAddUnits, AsyncAddWastage, AsyncAppLayout, AsyncCategory, AsyncConsumableReports, AsyncConsumptionIndex, AsyncConsumptionLookIndex, AsyncDashbord, AsyncGoodOut, AsyncGoodsIn, AsyncGoodsInAdd, AsyncGoodsInReports, AsyncGoodsOutAdd, AsyncGoodsOutReports, AsyncInOutConReports, AsyncinvsReports, AsyncItems, AsyncItemVsRatio, AsyncLocation, AsyncLocationStockReport, AsyncMinQuantityReport, AsyncRack, AsyncReports, AsyncSettings, AsyncStocks, AsyncType, AsyncUnits, AsyncWastage, AsyncAddGroupItemVsRatioVsConsumption, AsyncRequestorReport, AsyncTestTypeReport, AsyncReferReport, AsyncCareLab, AsyncRequestorSalesReport, AsyncDailySummary, AsyncDailyTransaction, AsyncLogin, AsyncPublicLayout, AsyncNotFound, AsyncFinance, AsyncTheme, AsyncOutSourcing, AsyncEditBill } from './App/asyncComponent';
 import PublicRoute from './Routes/PublicRoute';
 import { MenuSettings } from './Data/MenuSettings';
 import PrivateRouter from './Routes/PrivateRouter';
 import { createGlobalStyle } from 'styled-components'
-
+import { themedata } from './Components/theme/themdata';
+import { io } from "socket.io-client";
 
 
 function App() {
+  useEffect(() => {
+    localStorage.clear()
+    localStorage.setItem('theme', JSON.stringify(themedata.theme3));
+  
+    return () => {
+    };
+  }, []);
+  
 
+  // useEffect(()=> {
+  //   localStorage.clear()
+  //   localStorage.setItem('theme', JSON.stringify(themedata.theme3));
+  // }, [])
   const theme = JSON.parse(localStorage.getItem('theme'));
   const Potato = createGlobalStyle`
   :root {
-  --primary: ${theme?.primary ? theme?.primary : '#e95b29'};
-  --secondary: ${theme?.secondary ? theme?.secondary : '#195eb8'}; 
-  --primaryBackground:${theme?.primaryBackground ? theme?.primaryBackground : '#f0f0f0'};
+  --primary: ${theme?.primary ? theme?.primary : '#026b9e'};
+  --secondary: ${theme?.secondary ? theme?.secondary : '#3ea9dbf2'}; 
+  --primaryBackground:${theme?.primaryBackground ? theme?.primaryBackground : '#d0edff'};
   --secondaryBackground: #fefefe;
   --cardColor: #fefefe;
   --titleTxt: #232342;
   }
 `
+// const [user, setUser] = useState("");
+// const socket= io("http://anisdell:3006/", {
+//     path: "/hello-path/"
+//   });
+
+
+//   useEffect(() => {
+//     socket.emit("newUser", 'anib');
+//   }, [socket]);
+
+//   useEffect(() => {
+//     if(socket !== null){
+//       socket.on("updateNotification", (data) => {
+//         console.log(data);
+//     });
+
+//     onClickEvent()
+
+//     }
+// }, [socket]);
+
+// const onClickEvent = () => {
+//   socket.emit("sendNotification", {
+//       senderName: user,
+//       receiverName: user
+//     });
+// }
+
+
   return (
 
     <>

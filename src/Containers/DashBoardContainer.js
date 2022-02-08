@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { MenuRoute } from '../Data/MenuRoute'
-import imgOne from '../assets/images/crystalDi.png'
+import imgOne from '../assets/images/samjana.png'
 import { Col, Row } from 'antd'
 import { quotes } from '../Data/quotesData'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import loadlogo from '../../assets/images/crystalDiSmall.png';
+import loadlogo from '../../assets/images/samjanaSmall.png';
 
 const MobileNav = () => {
   return (
@@ -9,7 +9,7 @@ const MobileNav = () => {
         <img src={loadlogo} alt="" />
       </div>
       <div className="userIcon">
-        Crystal lab
+        Samjhana
       </div>
     </MobileNavContainer>
   )

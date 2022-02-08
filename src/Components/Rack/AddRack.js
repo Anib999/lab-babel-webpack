@@ -120,7 +120,7 @@ const AddRack = (props) => {
               <Select allowClear>
                 {locationList?.map(iTy => {
                   return (
-                    <Option value={iTy?.LId}>
+                    <Option value={iTy?.LId} key={iTy?.Location}>
                       {iTy?.Location}
                     </Option>
                   )

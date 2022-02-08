@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { MenuRoute, settingsMenu, dataMetricCon } from '../../Data/MenuRoute'
 import { NavLink } from 'react-router-dom'
-import comlogo from '../../assets/images/crystalDi.png';
-import comlogo1 from '../../assets/images/crystalDiSmall.png';
+import comlogo from '../../assets/images/samjana.png';
+import comlogo1 from '../../assets/images/samjanaSmall.png';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Layout, Menu } from 'antd';
 

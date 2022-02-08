@@ -50,7 +50,6 @@ const MainAppContentComponentContainer = styled.div`
     min-height: 100vh;
   }
   .costomeContent1{
-    
     padding: 20px 20px 20px 220px;
     @media(max-width: 576px){
       padding: 20px;

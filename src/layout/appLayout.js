@@ -11,7 +11,6 @@ const date = new Date();
 
 const AppLayout = (props) => {
   const [Value, setValue] = useState();
-  console.log(props)
 
   const statePass = (val) => {
     setValue(val);

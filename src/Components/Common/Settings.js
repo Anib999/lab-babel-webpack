@@ -8,7 +8,7 @@ const Settings = () => {
   return (
     <SettingsContainer>
       {data.map(e => (
-          <>
+          <div key={e.name}>
             {e.key !== "dashbord" ? 
             <NavLink to={e.path}>
               <div className='cButton'>
@@ -21,7 +21,7 @@ const Settings = () => {
            
              
              : ''}
-          </>
+          </div>
         ))}
     </SettingsContainer>
   )

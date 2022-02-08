@@ -110,10 +110,6 @@ const InOutConTab = () => {
 
   const labels = label;
 
-  // useEffect(() => {
-  //     getConsuData()
-  // }, [label])
-
   const dataRet = (val) => {
     let data = {
       fromdate: val[0].format("YYYY-MM-DD"),

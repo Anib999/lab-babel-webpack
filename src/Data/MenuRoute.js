@@ -38,20 +38,20 @@ export const MenuRoute = [
     path: '/reports',
     isactive: MenuSettings.reports,
   },
-  // {
-  //   icon: 'icon-graph',
-  //   key: 'finance',
-  //   name: 'Finance',
-  //   path: '/finance',
-  //   isactive: MenuSettings.finance
-  // },
-  // {
-  //   icon: 'icon-line2-doc',
-  //   key: 'misreports',
-  //   name: 'MIS Reports',
-  //   path: '/datametric',
-  //   isactive: MenuSettings.misreports,
-  // },
+  {
+    icon: 'icon-graph',
+    key: 'finance',
+    name: 'Finance',
+    path: '/finance',
+    isactive: MenuSettings.finance
+  },
+  {
+    icon: 'icon-line2-doc',
+    key: 'misreports',
+    name: 'MIS Reports',
+    path: '/datametric',
+    isactive: MenuSettings.misreports,
+  },
 ]
 
 export const settingsMenu = [

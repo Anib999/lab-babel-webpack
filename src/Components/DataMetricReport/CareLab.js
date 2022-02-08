@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components'
 import PageHeader from '../Common/pageHeader'
 import { Link } from 'react-router-dom'
+import { Row, Col } from 'antd'
 
 const data = [
     {
@@ -34,13 +35,22 @@ const CareLab = () => {
 
     return (
         <CareLabContain>
+            <div className="maiTopContainer">
             <PageHeader pageTitle="MIS Reports"></PageHeader>
+            </div>
             <div className="contents">
-                {
-                    data.map(e => (
-                        <Link to={`/datametric/${e.pathName}`} pathname={e.pathName}>{e.name}</Link>
-                    ))
-                }
+                <Row gutter={[16, 16]}>
+                    {
+                        data.map(e => (
+                            <Col sm={24} md={8} xs={24} lg={6} key={e.pathName}>
+                                <Link to={`/datametric/${e.pathName}`} key={e.pathName} pathname={e.pathName}>
+                                <div className="cButton"><span>{e.name}</span></div>
+                                </Link>
+                            </Col>
+                            
+                        ))
+                    }
+                </Row>
             </div>
         </CareLabContain>
     )
@@ -49,35 +59,44 @@ const CareLab = () => {
 export default CareLab
 
 const CareLabContain = styled.div`
-  background: var(--secondaryBackground);
-  box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.10 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  overflow: hidden;
-  margin-bottom: 50px;
-  .contents{
+  .cButton{
+    height: 120px;
     width: 100%;
-    padding: 2px 20px 40px 20px;
+    border-radius: 10px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    a{
-    font-size: 18px;
-    padding: 20px 30px;
-    background: rgba( 255, 255, 255, 0.25 );
+    justify-content: center;
+    align-items: center;
+    background: #fefefe;
     box-shadow: 0 2px 22px 0 rgba( 31, 38, 135, 0.17 );
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    color: #2f2f33;
-    }
-    @media (max-width: 768px) {
-      a {
-        width: 100%;
+    span{
+      font-size: 16px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--titleTxt);
+      text-align: center;
+      i{
+        font-size: 25px;
+        color: var(--primary);
       }
     }
+    
+    @media(max-width: 768px){
+      span{
+      font-size: 16px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-right: 10px;
+      i{
+        font-size: 25px;
+      }
+    }
+    }
+    @media(max-width: 500px){
+      height: 80px;
+    }
+   
   }
   `

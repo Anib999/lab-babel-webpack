@@ -57,13 +57,6 @@ const AddWastage = (props) => {
       form.resetFields()
     }
   }, [previousValues])
-
-  // useEffect(()=> {
-  // if(forEdit){
-  //   showModal()
-  // }
-  // }, [forEdit])
-
   const getAllLabItem = (ty = 0, cI = 0) => {
     let data = {
       typeId: ty,

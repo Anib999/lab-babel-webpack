@@ -46,7 +46,7 @@ const Index = () => {
       <Row gutter={[16, 16]}>
         {
           data.map(e => (
-            <Col sm={24} md={8} xs={24} lg={6}>
+            <Col sm={24} md={8} xs={24} lg={6} key={e.pathName}>
               <Link to={`./reports/${e.pathName}`} pathname={e.pathName}>
                 <div className="cButton"><span>{e.name}</span></div>
               </Link>

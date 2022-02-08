@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../../assets/images/crystalDiSmall.png'
+import logo from '../../assets/images/logo1.png'
 
 const DataIsLoading = () => {
   return (

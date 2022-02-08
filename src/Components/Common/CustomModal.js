@@ -31,7 +31,7 @@ const CustomModal = (props) => {
                     {
                         goodsRecList.map(ele => {
                             return (
-                                <tr>
+                                <tr key={ele?.GoodsInId}>
                                     <td>{ele?.GoodsInId}</td>
                                     <td>{ele?.RemainingCount}</td>
                                     <td><button data-rem={ele?.RemainingCount} value={ele?.GoodsInId} onClick={handleAdder}>Add</button></td>
